@@ -5,10 +5,17 @@ import com.example.fourart.entity.Gender;
 import com.example.fourart.entity.Member;
 import com.example.fourart.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@Transactional
 class MemberServiceTest {
 
     @Autowired MemberService memberService;
@@ -18,11 +25,14 @@ class MemberServiceTest {
     public void 회원가입() throws Exception {
 //Given
         Member member = new Member();
-        member.setEmail("kim");
+        member.setEmail("dsafsda@gmail.com");
 
+        System.out.println("here");
 //When
-        Long saveId = memberService.join(member);
-//Then
+        Long saveId;
+        System.out.println("here");
+        saveId = memberService.join(member);
+        /* Then */
         assertEquals(member, memberRepository.find(saveId));
     }
 
