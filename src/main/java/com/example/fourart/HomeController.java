@@ -1,24 +1,36 @@
 package com.example.fourart;
 
+import com.example.fourart.service.KakaoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+
+import org.aspectj.apache.bcel.classfile.annotation.NameValuePair;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.*;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
+import javax.swing.text.html.parser.Parser;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.http.HttpClient;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 public class HomeController {
+    @Autowired
+    private KakaoService kakao;
+
     @GetMapping("home")
     public String home(Model model){
         model.addAttribute("data","hello!!");
-        return "ya";
+        return "home";
     }
     httpConnection connection = httpConnection.getInstance();
 
@@ -32,10 +44,22 @@ public class HomeController {
         loginUrl.append("&response_type=code");
         String uri = loginUrl.toString();
 
-
-
-        System.out.println(">>>>>>>>"+uri);
+        System.out.println("goto>>>>>>>>"+uri);
         return "redirect:"+loginUrl.toString();
+    }
+    @RequestMapping(value="/kakao_login")
+    @GetMapping("success")
+    public String kakaoLogin(@RequestParam("code") String code, HttpSession session){
+        String access_Token = kakao.kakao_token(code);
+        System.out.println("access_Token = " + access_Token);
+
+        HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
+        System.out.println("login Controller : " + userInfo);
+        if (userInfo.get("email") != null) {
+            session.setAttribute("userId", userInfo.get("email"));
+            session.setAttribute("access_Token", access_Token);
+        }
+        return "success";
     }
 
 
