@@ -1,5 +1,6 @@
 package com.example.fourart.service;
 
+import com.example.fourart.entity.Member;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -15,6 +16,7 @@ import java.util.HashMap;
 @Service
 public class KakaoService {
 
+    private MemberService memberService;
     private final String client_secret ="zRWF9Fzl6vH688L7QhLUmxFZFTacfNMb";
     public String kakao_token(String authorize_code) {
         String access_Token = "";
@@ -102,7 +104,6 @@ public class KakaoService {
 
             userInfo.put("nickname", nickname);
             userInfo.put("email", email);
-
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

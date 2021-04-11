@@ -19,7 +19,6 @@ public class MemberService {
     @Transactional
     public Long join(Member member){
 
-        System.out.println("ser");
         validateDuplicateMember(member);
         System.out.println("member = " + member);
         Long id = memberRepository.save(member);

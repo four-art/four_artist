@@ -13,8 +13,15 @@ public class Member {
 
     @Id @GeneratedValue
     private Long id;
+
+    @Column(name="nickname")
+    private String nickname;
+
     @Column(name = "email")
     private String email;
+
+
+
     /**
     @Column(name = "gender")
     private Gender gender;

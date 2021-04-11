@@ -1,6 +1,8 @@
 package com.example.fourart;
 
+import com.example.fourart.entity.Member;
 import com.example.fourart.service.KakaoService;
+import com.example.fourart.service.MemberService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -26,6 +28,9 @@ import java.util.Map;
 public class HomeController {
     @Autowired
     private KakaoService kakao;
+
+    @Autowired
+    private MemberService memberService;
 
     @GetMapping("home")
     public String home(Model model){
@@ -59,10 +64,14 @@ public class HomeController {
             session.setAttribute("userId", userInfo.get("email"));
             session.setAttribute("access_Token", access_Token);
         }
+        return "signin";
+    }
+    @RequestMapping(value = "/signin",method = RequestMethod.POST)
+    public String signInPage(@ModelAttribute Member member, Model model){
+        memberService.join(member);
+        model.addAttribute("members",memberService.findMembers());
         return "success";
     }
-
-
     @RequestMapping(value="/logout")
     public String access(HttpSession session) throws IOException {
 
