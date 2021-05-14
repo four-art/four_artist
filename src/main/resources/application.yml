@@ -1,19 +1,4 @@
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /console
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: 892081326364-6qjj1qiei6i4sidmrcv1fdp2h3v8ilo3.apps.googleusercontent.com
-            client-secret: rcLOgY9kqXgrLU5k5cU0DR2O
-          facebook:
-            client-id: 285297796589349
-            client-secret: 6deeeea39fb623654e85d813b6edf679
-
   datasource:
     url: jdbc:h2:tcp://localhost/~/fourartist
     username: hong
@@ -26,18 +11,6 @@ spring:
       hibernate:
           #show_sql: true
         format_sql: true
-custom:
-  oauth2:
-    kakao:
-      client-id: be7ef71e584d254b94a84c6812e7844b
-      client-secret: qEDjregoc8ilshWaegEhBgPlwBXOkZYV
-    naver:
-      client-id: 1z9rhvy394bWVVY_CRI1
-      client-secret: QbIqI26mQA
 logging.level:
   org.hibernate.SQL: debug
-  org.springframework.security: DEBUG
-  org.springframework.web: DEBUG
-
-
 # org.hibernate.type: trace
