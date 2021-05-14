@@ -20,6 +20,10 @@ public class Member {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "instagram")
+    private String instagram;
+
+
 
 
     /**
