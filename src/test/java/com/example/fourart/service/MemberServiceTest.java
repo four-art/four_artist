@@ -1,5 +1,7 @@
 package com.example.fourart.service;
 
+import com.example.fourart.entity.AgeRange;
+import com.example.fourart.entity.Gender;
 import com.example.fourart.entity.Member;
 import com.example.fourart.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
