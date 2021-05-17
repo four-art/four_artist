@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Entity
 @Getter @Setter
@@ -23,6 +24,11 @@ public class Member {
     @Column(name = "instagram")
     private String instagram;
 
+    @Column(name = "profile_img")
+    private String profile_img;
+
+    @Column(name = "create_account_date")
+    private Date crateDate;
 
 
 
