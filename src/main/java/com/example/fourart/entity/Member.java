@@ -30,8 +30,6 @@ public class Member {
     @Column(name = "create_account_date")
     private Date crateDate;
 
-
-
     /**
     @Column(name = "gender")
     private Gender gender;
