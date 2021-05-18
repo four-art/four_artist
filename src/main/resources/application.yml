@@ -8,11 +8,11 @@ spring:
       client:
         registration:
           google:
-            client-id: 892081326364-6qjj1qiei6i4sidmrcv1fdp2h3v8ilo3.apps.googleusercontent.com
-            client-secret: rcLOgY9kqXgrLU5k5cU0DR2O
+            client-id: 
+            client-secret: 
           facebook:
-            client-id: 285297796589349
-            client-secret: 6deeeea39fb623654e85d813b6edf679
+            client-id: 
+            client-secret: 
   thymeleaf:
     prefix=classpath: templates/
     suffix: .html
