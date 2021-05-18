@@ -38,11 +38,11 @@ spring:
 custom:
   oauth2:
     kakao:
-      client-id: be7ef71e584d254b94a84c6812e7844b
-      client-secret: qEDjregoc8ilshWaegEhBgPlwBXOkZYV
+      client-id: 
+      client-secret: 
     naver:
-      client-id: 1z9rhvy394bWVVY_CRI1
-      client-secret: QbIqI26mQA
+      client-id: 
+      client-secret: 
 logging.level:
   org.hibernate.SQL: debug
   org.springframework.security: DEBUG
