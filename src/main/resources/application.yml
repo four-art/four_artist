@@ -13,7 +13,16 @@ spring:
           facebook:
             client-id: 285297796589349
             client-secret: 6deeeea39fb623654e85d813b6edf679
-
+  thymeleaf:
+    prefix=classpath: templates/
+    suffix: .html
+    check-template-location: true
+    cache: false
+  mvc:
+    static-path-pattern: "/static/**"
+  devtools:
+    livereload:
+      enabled: true
   datasource:
     url: jdbc:h2:tcp://localhost/~/fourartist
     username: hong

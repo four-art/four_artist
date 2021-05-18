@@ -1,9 +1,6 @@
 package com.example.fourart.secure;
 
 import com.example.fourart.service.SocialLoginService;
-import de.codecentric.boot.admin.server.config.AdminServerProperties;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
@@ -32,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.authorizeRequests()
-                .antMatchers("/","/oauth2/**","/login/**","/css/**", "/images/**", "/js/**", "/console/**", "/favicon.ico/**")//필요한 url 추가해주면서 진행
+                .antMatchers("/","/oauth2/**","/login/**", "/static/css/**", "/images/**", "/js/**", "/console/**", "/favicon.ico/**")//필요한 url 추가해주면서 진행
                 .permitAll()
                 .antMatchers("/google").hasAuthority(GOOGLE.getRoleType())
                 .antMatchers("/facebook").hasAuthority(FACEBOOK.getRoleType())
