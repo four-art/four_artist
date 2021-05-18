@@ -8,11 +8,11 @@ spring:
       client:
         registration:
           google:
-            client-id: 'my_google_client_id'
-            client-secret: 'my_google_client_secret'
+            client-id: 892081326364-6qjj1qiei6i4sidmrcv1fdp2h3v8ilo3.apps.googleusercontent.com
+            client-secret: rcLOgY9kqXgrLU5k5cU0DR2O
           facebook:
-            client-id: 'my_facebook_client_id'
-            client-secret: 'my_facebook_client_secret'
+            client-id: 285297796589349
+            client-secret: 6deeeea39fb623654e85d813b6edf679
 
   datasource:
     url: jdbc:h2:tcp://localhost/~/fourartist
@@ -29,11 +29,11 @@ spring:
 custom:
   oauth2:
     kakao:
-      client-id: 'my_kakao_client_id'
-      client-secret: 'my_kakao_client_secret'
+      client-id: be7ef71e584d254b94a84c6812e7844b
+      client-secret: qEDjregoc8ilshWaegEhBgPlwBXOkZYV
     naver:
-      client-id: 'my_naver_client_id'
-      client-secret: 'my_naver_client_secret'
+      client-id: 1z9rhvy394bWVVY_CRI1
+      client-secret: QbIqI26mQA
 logging.level:
   org.hibernate.SQL: debug
   org.springframework.security: DEBUG
