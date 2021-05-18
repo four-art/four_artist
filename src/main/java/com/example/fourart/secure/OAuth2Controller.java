@@ -8,7 +8,7 @@ public class OAuth2Controller {
 
     @GetMapping({"","/"})
     public String getAuthorizationMessage(){
-        return "home";
+        return "index";
     }
 
     @GetMapping("/login")
