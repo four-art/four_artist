@@ -33,7 +33,7 @@ public class SocialLoginService extends DefaultOAuth2UserService {
     private Converter<OAuth2UserRequest, RequestEntity<?>> requestEntityConverter = new OAuth2UserRequestEntityConverter();
     private RestOperations restOperations;
 
-    public void SocialLoginService(){
+    public SocialLoginService(){
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(new OAuth2ErrorResponseErrorHandler());
         this.restOperations = restTemplate;
