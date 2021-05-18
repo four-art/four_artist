@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="id=edge">
+    <meta name="google-signin-client_id" content="472013528031-d4ir5hi3gtjfnmi91telttj4h2das46v.apps.googleusercontent.com">
+    <title>4RT | Landing-page</title>
+    <link rel="stylesheet" href="css/landing-page.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="./jquery.lettering.js"></script>
+    <script type="text/javascript" src="./circletype.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+</head>
+
+<body>
+   <section class="header">
+        <nav>
+            <h1 style="
+                color: aliceblue; 
+                text-align: left; 
+                margin-top: 80px;
+                font-size: 22px;
+                margin-left: 20px;
+                font-weight: bold;">예술을 위한<br><br>아티스트 소셜 네트워크</h1><br>
+
+                
+           
+        </nav>
+
+<hr>
+<h1 style="color: aliceblue; margin-left: 50px; font-size: 80px;">4RT</h1>
+<h1 style="color: gray; margin-left: 50px; font-size: 12px;">예술과 관련된 다양한 사람들을 만날 수 있는 4RT </h1>
+<h1 style="color: gray; margin-left: 50px; font-size: 12px;">다양한 아티스트와 소통하며 예술활동을 공유하고, 협업해보세요. </h1>
+    
+    <br>
+<a href="javascript:;" class="btn_social" data-social="facebook" style="margin-left: 180px;">페이스북 로그인</a><br/><br>
+<a href="javascript:;" class="btn_social" data-social="google"style="margin-left: 180px;">구글 로그인</a><br/><br>
+<a href="javascript:;" class="btn_social" data-social="kakao"style="margin-left: 180px;">카카오톡 로그인</a><br/><br>
+<a href="javascript:;" class="btn_social" data-social="naver"style="margin-left: 180px;">네이버 로그인</a><br/>
+<br>
+<script>
+    let socials = document.getElementsByClassName("btn_social");
+    for(let social of socials) {
+        social.addEventListener('click', function(){
+            let socialType = this.getAttribute('data-social');
+            location.href="/oauth2/authorization/" + socialType;
+        })
+    }
+</script>
+   
+
+
+
+<hr>
+<h1 style="color: gray; font-size: 12px; text-align: center;margin-top: 10px;">회원가입 시 <a href="#">이용약관</a> 및 <a href="#">개인정보처리방침</a>에 동의하게 됩니다.</h1>
+<i class="fas fa-globe" style="color: skyblue; margin-left: 220px; margin-top: 50px; font-size: 60px;"></i>
+<h1 style="color: aliceblue; text-align: center; margin-top: 20px;font-size: 20px;">아티스트 소셜 네트워크</h1>
+<h1 style="color: aliceblue; text-align: center; margin-top: 20px;font-size: 13px;">음악, 무용, 미술, 전통, 다원 등 다양한 분야의 예술인들과 <br>예술활동을 공유하며 소통해보세요.</h1>
+
+
+
+
+   </section>
+
+<section class="course">
+
+        <h2>예술을 위한 <br>아티스트 소셜 네트워크</h2>
+        <h3>#활동공유 #팀 빌딩 #협업</h3><br>
+        <i class="fas fa-network-wired" style="font-size: 50px;"><br></i>
+        <h3>아티스트 소셜 네트워크</h3>
+        <p>음악, 무용, 미술, 전통, 다원 등 다양한 분야의 예술인들과 예술활동을 공유하며 소통해보세요.</p>
+        <br>
+        <i class="fab fa-instagram" style="font-size: 50px;"></i>
+        <h3>인스타그램 프로필</h3>
+        <p>인스타그램 계정의 활동 피드로 아티스트 인증하고<br>따로 연락처, 프로필 작성없이<br>인스타그램으로 간단하게</p>
+        <br>
+        <i class="fas fa-handshake" style="font-size: 50px;"></i>
+        <h3>협업 & 팀 빌딩</h3>
+        <p>수수료 걱정없이<br>아티스트를 직접 찾거나 모집하세요</p>
+        <br>
+        <i class="fab fa-youtube" style="font-size: 50px;"></i>
+        <h3>4RT 프로젝트</h3>
+<p>수수료 걱정없이<br>아티스트를 직접 찾거나 모집하세요</p>
+
+    <div class="row">
+       
+
+        <div> 
+        </div>
+
+        <div><br></div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+</body>
+</html>
