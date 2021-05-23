@@ -1,6 +1,7 @@
 package com.example.fourart.secure;
 
 import com.example.fourart.service.SocialLoginService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
@@ -19,13 +20,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static com.example.fourart.secure.SocialLoginType.*;
+import static com.example.fourart.entity.SocialLoginType.*;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-
+    private final SocialLoginService socialLoginService;
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.authorizeRequests()
@@ -38,13 +39,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
             .and()
                 .oauth2Login()
-                .userInfoEndpoint().userService(new SocialLoginService())
+                .userInfoEndpoint().userService(socialLoginService)
             .and()
                 .defaultSuccessUrl("/loginSuccess")
                 .failureUrl("/loginFail")
             .and()
                 .exceptionHandling()
-                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/"));
+                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/"))
+            .and()
+                .logout()
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/");
     }
 
     /**

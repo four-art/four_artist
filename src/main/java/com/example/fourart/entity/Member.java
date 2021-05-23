@@ -1,10 +1,12 @@
 package com.example.fourart.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,6 +23,8 @@ public class Member {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "grade")
+    private Role role;
     @Column(name = "instagram")
     private String instagram;
 
@@ -30,14 +34,4 @@ public class Member {
     @Column(name = "create_account_date")
     private Date crateDate;
 
-    /**
-    @Column(name = "gender")
-    private Gender gender;
-    @Column(name = "age_range")
-    private AgeRange ageRange;
-
-    @Lob
-    @Column(name = "info",nullable = true)
-    private String info;
-    **/
 }
