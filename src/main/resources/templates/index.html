@@ -8,12 +8,11 @@
     <title>4RT | Landing-page</title>
     <link rel="stylesheet" href="../static/css/landing-page.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script type="text/javascript" src="./jquery.lettering.js"></script>
-    <script type="text/javascript" src="./circletype.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
+           @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
+
 
     </style>
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700" rel="stylesheet">
@@ -21,28 +20,29 @@
 </head>
 
 <body>
-<center>
-    <section class="header">
+    <center>
+   <section class="header">
+
         <nav>
             <h3 style="
                 color: aliceblue;
                 text-align: left;
                 margin-top: 80px;
                 font-size: 22px;
-                margin-left: 0px;
+                margin-left: 0.12px;
                 font-weight: bold;
                 font-family: 'Nanum Gothic';
 ">예술을 위한<br><br>아티스트 소셜 네트워크</h3><br>
 
 
-
         </nav>
 
-        <hr style=" width: 370px;
+<hr style=" width: 370px;
 height: 2px;
 margin: 19px 0 18px 20px;
 background-color: #ededed;">
-        <h1 style="width: 150px;
+<h1 style="width: 150px;
+
 height: 92px;
 margin: 18px 9145px 15px 20px;
 font-family: 'Nanum Gothic';
@@ -54,36 +54,36 @@ line-height: normal;
 letter-spacing: 4px;
 text-align: center;
 color: #ffffff;">4RT</h1>
-        <h1 style="color: gray; width: 350px; font-size: 10px; text-align: left; margin-left: 0px; font-family: 'Nanum Gothic';">예술과 관련된 다양한 사람들을 만날 수 있는 <b style="color: #ededed;">4RT</b> </h1>
-        <h1 style="color: gray; width: 350px; font-size: 10px; text-align: left; margin-left: 0px; font-family: 'Nanum Gothic';">다양한 아티스트와 소통하며 예술활동을 공유하고, 협업해보세요. </h1>
+<h1 style="color: gray; width: 350px; font-size: 10px; text-align: left; margin-left: 0px; font-family: 'Nanum Gothic';">예술과 관련된 다양한 사람들을 만날 수 있는 <b style="color: #ededed;">4RT</b> </h1>
+<h1 style="color: gray; width: 350px; font-size: 10px; text-align: left; margin-left: 0px; font-family: 'Nanum Gothic';">다양한 아티스트와 소통하며 예술활동을 공유하고, 협업해보세요. </h1>
+    
+    <br>
+<a href="javascript:;" class="btn_social" data-social="facebook" style=" text-decoration: none;"><img src="../static/css/img/페이스북로그인.png" alt="" style="width: 250px;"></a><br/><br>
+<a href="javascript:;" class="btn_social" data-social="google"style="margin-left: -15px; text-decoration: none;"><img src="../static/css/img/구글로그인.png" alt="" style="width: 250px;"></a><br/><br>
+<a href="javascript:;" class="btn_social" data-social="kakao"style="margin-left: -15px; text-decoration: none;"><img src="../static/css/img/카카오로그인.png" alt="" style="width: 250px;"></a><br/><br>
+<a href="javascript:;" class="btn_social" data-social="naver"style="text-decoration: none;"><img src="../static/css/img/네이버로그인.png" alt="" style="width: 250px;"></a><br/>
+<br>
+<script>
+    let socials = document.getElementsByClassName("btn_social");
+    for(let social of socials) {
+        social.addEventListener('click', function(){
+            let socialType = this.getAttribute('data-social');
+            location.href="/oauth2/authorization/" + socialType;
+        })
+    }
+</script>
+   
 
-        <br>
-        <a href="javascript:;" class="btn_social" data-social="facebook" style=" text-decoration: none;"><img src="../static/css/img/페이스북로그인.png" alt="" style="width: 250px;"></a><br/><br>
-        <a href="javascript:;" class="btn_social" data-social="google"style="margin-left: -15px; text-decoration: none;"><img src="../static/css/img/구글로그인.png" alt="" style="width: 250px;"></a><br/><br>
-        <a href="javascript:;" class="btn_social" data-social="kakao"style="margin-left: -15px; text-decoration: none;"><img src="../static/css/img/카카오로그인.png" alt="" style="width: 250px;"></a><br/><br>
-        <a href="javascript:;" class="btn_social" data-social="naver"style="text-decoration: none;"><img src="../static/css/img/네이버로그인.png" alt="" style="width: 250px;"></a><br/>
-        <br>
-        <script>
-            let socials = document.getElementsByClassName("btn_social");
-            for(let social of socials) {
-                social.addEventListener('click', function(){
-                    let socialType = this.getAttribute('data-social');
-                    location.href="/oauth2/authorization/" + socialType;
-                })
-            }
-        </script>
 
 
-
-
-        <hr style="width: 316px;
+<hr style="width: 316px;
 height: px;
 margin: 39px 37px 14px;
 background-color: #aaaaaa;">
 
 
 
-        <h1 style="width: 310px;
+<h1 style="width: 310px;
 height: 14px;
 margin: 14px 40px 47px;
 font-family: 'Nanum Gothic';
@@ -95,12 +95,12 @@ line-height: normal;
 letter-spacing: normal;
 text-align: center;
 color: #aaaaaa;">회원가입 시 <a href="#">이용약관</a> 및 <a href="#">개인정보처리방침</a>에 동의하게 됩니다.</h1>
-        <img src="../static/css/img/ICON_2021-05-19/ICON.png" alt="" style="width: 60px;
+<img src="../static/css/img/ICON_2021-05-19/ICON.png" alt="" style="width: 60px;
 height: 60px;
 margin: 0 130px 10px;
 object-fit: contain;">
 
-        <h1 style="width: 180px;
+<h1 style="width: 180px;
 height: 21px;
 margin: 10px 70px 25px;
 font-family: 'Nanum Gothic';
@@ -115,7 +115,7 @@ color: #ffffff;">아티스트 소셜 네트워크</h1>
 
 
 
-        <h1 style="width: 320px;
+<h1 style="width: 320px;
 height: 33px;
 margin: 25px 0 0;
 font-family: NanumGothic;
@@ -128,17 +128,17 @@ letter-spacing: normal;
 text-align: center;
 color: #ffffff94;">음악, 무용, 미술, 전통, 다원 등 다양한 분야의 예술인들과 <br>예술활동을 공유하며 소통해보세요.</h1>
 
-        <br>
-        <img src="../static/css/img/무용.png" alt="" style="width: 154px;
+    <br>
+<img src="../static/css/img/무용.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px;
 object-fit: contain;">
-        <img src="../static/css/img/첼로.png" alt="" style="width: 154px;
+<img src="../static/css/img/첼로.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px 42px;
 object-fit: contain;
 ">
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0 0 10px;
 font-family: 'Nanum Gothic';
@@ -150,7 +150,7 @@ letter-spacing: normal;
 text-align: center;
 float: left;
 color: #ffffff;">#무용 #발레 #안무가</p>
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0px 10px 4px;
 font-family: 'Nanum Gothic';
@@ -166,16 +166,16 @@ color: #ffffff;">#클래식 #첼로 #현대음악</p>
 
 
 
-        <img src="../static/css/img/댄스.png" alt="" style="width: 154px;
+<img src="../static/css/img/댄스.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px;
 object-fit: contain;">
-        <img src="../static/css/img/싱어송라이터.png" alt="" style="width: 154px;
+<img src="../static/css/img/싱어송라이터.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px 42px;
 object-fit: contain;
 ">
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0 0 10px;
 font-family: 'Nanum Gothic';
@@ -187,7 +187,7 @@ letter-spacing: normal;
 text-align: center;
 float: left;
 color: #ffffff;">#스트리트 #댄스</p>
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0px 10px 4px;
 font-family: 'Nanum Gothic';
@@ -204,16 +204,16 @@ color: #ffffff;">#싱어송라이터 #인디</p>
 
 
 
-        <img src="../static/css/img/작곡.png" alt="" style="width: 154px;
+<img src="../static/css/img/작곡.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px;
 object-fit: contain;">
-        <img src="../static/css/img/거문고.png" alt="" style="width: 154px;
+<img src="../static/css/img/거문고.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px 42px;
 object-fit: contain;
 ">
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0 0 10px;
 font-family: 'Nanum Gothic';
@@ -225,7 +225,7 @@ letter-spacing: normal;
 text-align: center;
 float: left;
 color: #ffffff;">#작곡 #편곡 #지휘 #영상작곡</p>
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0px 10px 4px;
 font-family: 'Nanum Gothic';
@@ -240,16 +240,16 @@ color: #ffffff;">#전통예술 #국악 #거문고</p>
 
 
 
-        <img src="../static/css/img/전자음악.png" alt="" style="width: 154px;
+<img src="../static/css/img/전자음악.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px;
 object-fit: contain;">
-        <img src="../static/css/img/설치.png" alt="" style="width: 154px;
+<img src="../static/css/img/설치.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px 42px;
 object-fit: contain;
 ">
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0 0 10px;
 font-family: 'Nanum Gothic';
@@ -261,7 +261,7 @@ letter-spacing: normal;
 text-align: center;
 float: left;
 color: #ffffff;">#전자음악 #사운드디자인</p>
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0px 10px 4px;
 font-family: 'Nanum Gothic';
@@ -276,17 +276,16 @@ color: #ffffff;">#설치 #시각 #다원예술</p>
 
 
 
-
-        <img src="../static/css/img/미술.png" alt="" style="width: 154px;
+<img src="../static/css/img/미술.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px;
 object-fit: contain;">
-        <img src="../static/css/img/패션아트.png" alt="" style="width: 154px;
+<img src="../static/css/img/패션아트.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px 42px;
 object-fit: contain;
 ">
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0 0 10px;
 font-family: 'Nanum Gothic';
@@ -298,7 +297,7 @@ letter-spacing: normal;
 text-align: center;
 float: left;
 color: #ffffff;">#미술 #페인팅 #특수분장</p>
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 10px 10px 19px;
 font-family: 'Nanum Gothic';
@@ -312,18 +311,19 @@ float: left;
 color: #ffffff;">#패션아트</p>
 
 
+<<<<<<< HEAD
 
 
-        <img src="../static/css/img/공예.png" alt="" style="width: 154px;
+<img src="../static/css/img/공예.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px;
 object-fit: contain;">
-        <img src="../static/css/img/영상아트.png" alt="" style="width: 154px;
+<img src="../static/css/img/영상아트.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px 42px;
 object-fit: contain;
 ">
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0 0 10px;
 font-family: 'Nanum Gothic';
@@ -335,7 +335,7 @@ letter-spacing: normal;
 text-align: center;
 float: left;
 color: #ffffff;">#공예 #조각 #소품</p>
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0px 10px 4px;
 font-family: 'Nanum Gothic';
@@ -349,16 +349,16 @@ float: left;
 color: #ffffff;">#영상아트 #포토그래퍼</p>
 
 
-        <img src="../static/css/img/감독.png" alt="" style="width: 154px;
+<img src="../static/css/img/감독.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px;
 object-fit: contain;">
-        <img src="../static/css/img/작가.png" alt="" style="width: 154px;
+<img src="../static/css/img/작가.png" alt="" style="width: 154px;
 height: 154px;
 margin: 0 0 10px 42px;
 object-fit: contain;
 ">
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0 0 10px;
 font-family: 'Nanum Gothic';
@@ -370,7 +370,7 @@ letter-spacing: normal;
 text-align: center;
 float: left;
 color: #ffffff;">#감독 #연출</p>
-        <p style="width: 154px;
+<p style="width: 154px;
 height: 14px;
 margin: -10px 0px 10px 4px;
 font-family: 'Nanum Gothic';
@@ -382,15 +382,15 @@ letter-spacing: normal;
 text-align: right;
 float: left;
 color: #ffffff;">#작가 #스토리 #시나리오</p>
-        <a src=" alt="" style="width: 154px;
-        height: 154px;
-        margin: 0 0 10px 42px;
-        object-fit: contain;
-        ">forever 4rt</a>
+<a src=" alt="" style="width: 154px;
+height: 154px;
+margin: 0 0 10px 42px;
+object-fit: contain;
+">forever 4rt</a>
 
-    </section>
+   </section>
 
-    <section class="course">
+<section class="course">
         <img src="../static/css/img/ICON_2021-05-19 (1)/ICON@3x.png" alt="" style=" width: 60px;
         height: 60px;
         object-fit: contain;">
@@ -418,32 +418,23 @@ color: #ffffff;">#작가 #스토리 #시나리오</p>
         text-align: center;
         color: #333333;">수수료 걱정없이 <br>아티스트를 직접 찾거나 모집해보세요.</p>
 
-        <img src="../static/css/img/해시태그검색_2021-05-20/해시태그검색@3x.png" alt="" style="width: 370px;
+<img src="../static/css/img/해시태그검색_2021-05-20/해시태그검색@3x.png" alt="" style="width: 370px;
 height: 236px;
 margin: 55px 0 55px -10px;
 object-fit: contain;
 ">
 
-        <img src="../static/css/img/키워드검색_2021-05-20/키워드검색@3x.png" alt="" style=" width: 370px;
+<img src="../static/css/img/키워드검색_2021-05-20/키워드검색@3x.png" alt="" style=" width: 370px;
 height: 236px;
 margin: 55px 20px 55px 0;
 object-fit: contain;
 ">
 
-        <img src="../static/css/img/게시글업로드_2021-05-20/게시글업로드@3x.png" alt="" style="width: 370px;
+<img src="../static/css/img/게시글업로드_2021-05-20/게시글업로드@3x.png" alt="" style="width: 370px;
 height: 491px;
 margin: 55px 0 0 -10px;
 object-fit: contain;">
-
-
-
-
-
-
-
-
-
-
+       
 
 
 
@@ -463,5 +454,23 @@ object-fit: contain;">
 </center>
 
 
+
+
+
+   
+</section>
+<a src=" alt="" style="width: 154px;
+height: 154px;
+margin: 0 0 10px 42px;
+object-fit: contain;
+color: white;
+">forever 4rt</a>
+
+
+
+
+    </center>
+
+   
 </body>
 </html>
