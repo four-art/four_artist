@@ -25,8 +25,8 @@ class MemberRepositoryTest {
     public void testMember(){
         Member member = new Member();
         member.setEmail("sdasfasf@adsa.com");
-        Long id = memberRepository.save(member);
-        System.out.println("\n\n\n\n\n"+id+"\n\n\n\n");
+        memberRepository.save(member);
+        System.out.println("\n\n\n\n\n"+"save"+"\n\n\n\n");
     }
 
 
