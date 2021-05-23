@@ -1,4 +1,4 @@
-package com.example.fourart.secure;
+package com.example.fourart.entity;
 
 public enum SocialLoginType {
     GOOGLE("google"),
