@@ -8,7 +8,7 @@ public class OAuth2Controller {
 
     @GetMapping({"","/"})
     public String getAuthorizationMessage(){
-        return "home";
+        return "index";
     }
 
     @GetMapping("/login")
@@ -18,7 +18,7 @@ public class OAuth2Controller {
 
     @GetMapping({"/loginSuccess","/success"})
     public String loginSuccess(){
-        return "loginSuccess";
+        return "signup";
     }
 
     @GetMapping("/loginFail")

@@ -1,7 +1,11 @@
 *{
     margin: 0;
     padding: 0;
+<<<<<<< HEAD:src/main/resources/static/css/landing-page.css
    width: 390px;
+=======
+    width: 390px;
+>>>>>>> b9aa2eea599ea211c5cb5e2703d5ffa4a011b6d8:src/main/resources/templates/css/landing-page.css
 }
 
 
@@ -31,7 +35,7 @@ nav img{
     text-align: right;
 }
 .nav-links ul li{
- 
+
 
     list-style: none;
     display: inline-block;
@@ -185,7 +189,7 @@ h3{
     position: relative;
     height: 50px;
     overflow: hidden;
-    
+
 }
 .form input{
     width: 100%;
@@ -224,7 +228,7 @@ h3{
     transition: all 0.3s ease;
 }
 
-.form input:focus + .label-name .content-name, 
+.form input:focus + .label-name .content-name,
 .form input:valid + .label-name .content-name{
     transform: translateY(-150%);
     font-size: 14px;
@@ -257,5 +261,3 @@ ul li{
     letter-spacing: 15px;
     animation: animate 2.0s linear infinite;
 }
-
-
