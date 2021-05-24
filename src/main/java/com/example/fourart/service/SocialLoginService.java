@@ -1,18 +1,20 @@
 package com.example.fourart.service;
 
+import com.example.fourart.entity.Member;
+import com.example.fourart.entity.Role;
 import com.example.fourart.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.oauth2.client.http.OAuth2ErrorResponseErrorHandler;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequestEntityConverter;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2AuthorizationException;
@@ -26,17 +28,20 @@ import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestOperations;
+import org.springframework.web.client.RestTemplate;
 
-import javax.servlet.http.HttpSession;
+import javax.persistence.PersistenceContext;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
 @Slf4j
 @Transactional(readOnly = true)
-@RequiredArgsConstructor
 public class SocialLoginService extends DefaultOAuth2UserService {
-    private final MemberRepository memberRepository;
-    private final HttpSession httpSession;
+
+    @Autowired
+    MemberRepository memberRepository;
+
     private String USER_INFO_URI_MISSING_ERROR = "user_info_uri_is_missed";
     private static final ParameterizedTypeReference<Map<String, Object>>
             PARAMETERIZED_TYPE_REFERENCE =
@@ -44,13 +49,18 @@ public class SocialLoginService extends DefaultOAuth2UserService {
     private Converter<OAuth2UserRequest, RequestEntity<?>> requestEntityConverter = new OAuth2UserRequestEntityConverter();
     private RestOperations restOperations;
 
-
+    public SocialLoginService(){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setErrorHandler(new OAuth2ErrorResponseErrorHandler());
+        this.restOperations = restTemplate;
+    }
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException{
         Assert.notNull(userRequest,"userRequest is null");
-
-        String registrationId = userRequest.getClientRegistration().getRegistrationId();
+        /**
+         *
+         */
         if(!StringUtils.hasText(userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUri())){
             OAuth2Error oAuth2Error = new OAuth2Error(
                     USER_INFO_URI_MISSING_ERROR,
@@ -59,7 +69,6 @@ public class SocialLoginService extends DefaultOAuth2UserService {
             );
             throw new OAuth2AuthenticationException(oAuth2Error,oAuth2Error.toString());
         }
-
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
         if(!StringUtils.hasText(userNameAttributeName)){
             OAuth2Error oAuth2Error = new OAuth2Error(
@@ -89,13 +98,35 @@ public class SocialLoginService extends DefaultOAuth2UserService {
         for(String auth : token.getScopes()){
             authorities.add(new SimpleGrantedAuthority("SCOPE_"+auth));
         }
-        log.info("I arrive here");
-        log.info(userAttributes.keySet().toString());
-        //여기서 정보를 가져가기
+
+        Member member = new Member();
+        try{
+            log.info("This is Kakao");
+            Map<String,Object> nickname = (Map<String, Object>) userAttributes.get("properties");
+            Map<String,Object> kakao_account = (Map<String, Object>) userAttributes.get("kakao_account");
+            Map<String,Object> profile = (Map<String, Object>) kakao_account.get("profile");
+            log.info(profile.get("profile_image_url").toString());
+            log.info(kakao_account.get("email").toString());
+
+            member.setNickname(nickname.toString());
+            member.setProfile_img(profile.get("profile_image_url").toString());
+            member.setEmail(kakao_account.get("email").toString());
+            LocalDateTime createDate = LocalDateTime.now();
+            member.setCreateDate(createDate);
+            member.setRole(Role.GUEST);
+            log.info(member.toString());
+            try{
+                log.info("?????",member.toString());
+                memberRepository.save(member);
+                log.info("?????",member.toString());
+            }catch (IllegalStateException ex){
+                log.error("Please Using another social account!");
+            }
+        }catch(Exception ex){
+            log.info("This is Google or Naver");
+        }
         return new DefaultOAuth2User(authorities,userAttributes,userNameAttributeName);
     }
-
-
 
     private Map<String, Object> getUserAttributes(ResponseEntity<Map<String,Object>> responseEntity){
         Map<String, Object> userAttributes = responseEntity.getBody();
@@ -105,6 +136,13 @@ public class SocialLoginService extends DefaultOAuth2UserService {
             userAttributes.remove("response");
         }
         return userAttributes;
+    }
+
+    private void validateDuplicateMember(Member member){
+        Optional<Member> findMembers = memberRepository.findByEmail(member.getEmail());
+        if(!findMembers.isEmpty()){
+            throw new IllegalStateException("이미 가입된 이메일입니다.");
+        }
     }
 
 }
