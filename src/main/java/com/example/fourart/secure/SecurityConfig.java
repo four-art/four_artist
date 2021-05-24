@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -25,6 +26,7 @@ import static com.example.fourart.entity.SocialLoginType.*;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+@PropertySource("classpath:application.yml")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final SocialLoginService socialLoginService;
     @Override
@@ -39,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
             .and()
                 .oauth2Login()
-                .userInfoEndpoint().userService(socialLoginService)
+                .userInfoEndpoint().userService(new SocialLoginService())
             .and()
                 .defaultSuccessUrl("/loginSuccess")
                 .failureUrl("/loginFail")
