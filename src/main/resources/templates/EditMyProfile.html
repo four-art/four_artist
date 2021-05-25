@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.thymeleaf.org" lang="ko">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="id=edge">
+    <meta charset="utf-8">
+    <meta name="google-signin-client_id" content="472013528031-d4ir5hi3gtjfnmi91telttj4h2das46v.apps.googleusercontent.com">
+    <title>4RT | EditMyProfile</title>
+    <link rel="stylesheet" href="css/.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <style>
+           @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
+
+    </style>
+
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700" rel="stylesheet">
+
+</head>
+<body style="background-color: white; max-width: 390px;">
+    <p style="width: 140px;
+    height: 25px;
+    margin: 0 20px 22px 196px;
+    font-family: NanumGothic;
+    font-size: 22px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #000000;">프로필 편집</p>
+    <img src="../static/css/img/bookmark@3x.png" alt="" style=" width: 30px;
+  height: 40px;
+  margin: 0 10px 0px 290px;
+  object-fit: contain;">
+
+
+
+
+  <img src="../static/css/img/Profile Picture@3x.png" alt="" style="width: 80px;
+  height: 80px;
+  margin: -40px 250px 15px 10px;
+  object-fit: contain;">
+  <p style=" width: 330px;
+  height: 28px;
+  margin: 15px 0 5px 10px;
+  font-family: NanumGothic;
+  font-size: 24px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #aaaaaa;">닉네임</p>
+
+  <p style="width: 330px;
+  height: 17px;
+  margin: 5px 0 9px 10px;
+  font-family: NanumGothic;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #aaaaaa;">#해시태그 (최대 5개)</p>
+  <p style="width: 330px;
+  height: 80px;
+  margin: 9px 0 10px 10px;
+  font-family: NanumGothic;
+  font-size: 10px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #aaaaaa;">간략소개</p>
+
+  <img src="../static/css/img/인스타그램 로고 타원@3x.png" alt="" style=" width: 30px;
+  height: 30px;
+  margin: 0 5px 0 10px;
+  object-fit: contain;">
+  <p style="width: 190px;
+  height: 19px;
+  margin: -30px 0 5px 45px;
+  font-family: NanumGothic;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  position: absolute;
+  color: #333333;">@u.ding_composer</p>
+
+  <img src="../static/css/img/Button(30)-small@3x.png" alt="" style="  width: 100px;
+  height: 30px;
+  margin: 0 10px 10px 196px;
+  object-fit: contain;
+  position: absolute;">
+
+  <p style="width: 175px;
+    margin: 10px 10px 10px 130px;
+
+  height: 17px;
+  font-family: NanumGothic;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #333333;">프로필 완료</p>
+  
+
+
+
+   
+   
+      
+    
+        <h2 th:text = "${dd}"></h2> <!--dd를 회원가입으로-->
+
+
+
+        <table>
+            <tr>
+                <th>이름</th>
+                <th>아이디/이메일</th>
+                <th>핸드폰번호</th>
+                <th>성별</th> 
+                <th>등록일자</th>
+            </tr>
+
+            <tr th:each="user : ${userList}"> 
+                <td th:text="${user.userName}"></td> 
+                <td th:text="|${user.id + ' / ' + user.email}|" th:href="@{'user/'+user.id}"></td>
+                <td th:text="${user.phone}"></td> 
+                <td th:text="${user.sex == 'M' ? '남자' : '여자' }"></td>
+                <td th:text="${#dates.format(user.createDt, 'yyyy-MM-dd HH:mm')}"></td> 
+            </tr> 
+        </table>
+
+</body>
+</html>
+
