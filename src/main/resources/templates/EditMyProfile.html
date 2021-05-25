@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="google-signin-client_id" content="472013528031-d4ir5hi3gtjfnmi91telttj4h2das46v.apps.googleusercontent.com">
     <title>4RT | EditMyProfile</title>
-    <link rel="stylesheet" href="css/.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -109,7 +109,7 @@
   position: absolute;">
 
   <p style="width: 175px;
-    margin: 10px 10px 10px 130px;
+    margin: 20px 10px 10px 130px;
 
   height: 17px;
   font-family: NanumGothic;
@@ -123,11 +123,54 @@
   color: #333333;">프로필 완료</p>
   
 
+  <p style="  width: 140px;
+  height: 25px;
+  margin: 20px 10px 0 10px;
+  font-family: NanumGothic;
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;">프로필 설정</p>
+<hr style="width: 350px;
+height: 2px;
+margin: 9px 20px 303px 10px;
+background-color: #000000;">
 
+<nav class="nav">
+    <a href="./home.html" class="nav__link">
+      <span class="nav__text"><img src="../static/css/img/home@3x.png" alt="" style="width: 18px;
+        height: 20px;
+        object-fit: contain;"></span>
+    </a>
+    <a href="./artist.html" class="nav__link">
+      <span class="nav__text"><img src="../static/css/img/user-plus@3x.png" alt="" style="width: 18px;
+        height: 20px;
+        object-fit: contain;"></span>
+    </a>
+    <a href="#" class="nav__link">
+      <span class="nav__text"><img src="../static/css/img/briefcase@3x.png" alt="" style="width: 18px;
+        height: 20px;
+        object-fit: contain;"></span>
+    </a>
+    <a href="#" class="nav__link">
+      <span class="nav__text"><img src="../static/css/img/icon-Bell@3x.png" alt="" style="width: 18px;
+        height: 20px;
+        object-fit: contain;"></span>
+    </a>
+    <a href="./menu.html" class="nav__link">
+      <span class="nav__text"><img src="../static/css/img/menu@3x.png" alt="" style="width: 18px;
+        height: 20px;
+        object-fit: contain;"></span>
+    </a>
+  </nav>
 
    
-   
-      
+   <br>
+      <br>
     
         <h2 th:text = "${dd}"></h2> <!--dd를 회원가입으로-->
 
