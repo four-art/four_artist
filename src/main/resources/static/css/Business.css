@@ -12,37 +12,6 @@ a{
     text-decoration: none;
     font-size: 20px;
     color: black;
-    
-}
-
-.icon{
-    position: absolute;
-    margin-left: 107px;
-    z-index: 1;
-}
-input{
-  
-    margin: 0 10px 0 11px;
-    width: 245px;
-    height: 40px;
-    padding: 10px 15px 10px 40px;
-    border-radius: 25px;
-    border: none;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-    background-color: #ffffff;
-}
-input:focus{
-    outline: none;
-}
-
-
-
-
-.bookmark{
-    width: 20px;
-  height: 25px;
-  margin: 7px 0 8px 10px;
-  object-fit: contain;
 }
 .navbar{
     padding: 10px 20px;
@@ -65,10 +34,11 @@ input:focus{
     margin: 0 30px;
 }
 
-.navbar .logo{
+.logo{
     font-size: 35px;
     color: black;
-    font-family: 'Nanum';
+    font-family: 'Nanum Gothic';
+    font-weight: 700;
 }
 .mobile-list{
     display: none;
