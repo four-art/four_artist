@@ -15,6 +15,7 @@ a{
     
 }
 
+
 .icon{
     position: absolute;
     margin-left: 107px;
@@ -28,7 +29,7 @@ input{
     padding: 10px 15px 10px 40px;
     border-radius: 25px;
     border: none;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.20);
     background-color: #ffffff;
 }
 input:focus{
