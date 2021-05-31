@@ -34,6 +34,9 @@ import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import static com.example.fourart.entity.Role.GUEST;
+import static com.example.fourart.entity.SocialLoginType.KAKAO;
+
 @Service
 @Slf4j
 @Transactional(readOnly = true)
@@ -99,32 +102,6 @@ public class SocialLoginService extends DefaultOAuth2UserService {
             authorities.add(new SimpleGrantedAuthority("SCOPE_"+auth));
         }
 
-        Member member = new Member();
-        try{
-            log.info("This is Kakao");
-            Map<String,Object> nickname = (Map<String, Object>) userAttributes.get("properties");
-            Map<String,Object> kakao_account = (Map<String, Object>) userAttributes.get("kakao_account");
-            Map<String,Object> profile = (Map<String, Object>) kakao_account.get("profile");
-            log.info(profile.get("profile_image_url").toString());
-            log.info(kakao_account.get("email").toString());
-
-            member.setNickname(nickname.toString());
-            member.setProfile_img(profile.get("profile_image_url").toString());
-            member.setEmail(kakao_account.get("email").toString());
-            LocalDateTime createDate = LocalDateTime.now();
-            member.setCreateDate(createDate);
-            member.setRole(Role.GUEST);
-            log.info(member.toString());
-            try{
-                log.info("?????",member.toString());
-                memberRepository.save(member);
-                log.info("?????",member.toString());
-            }catch (IllegalStateException ex){
-                log.error("Please Using another social account!");
-            }
-        }catch(Exception ex){
-            log.info("This is Google or Naver");
-        }
         return new DefaultOAuth2User(authorities,userAttributes,userNameAttributeName);
     }
 

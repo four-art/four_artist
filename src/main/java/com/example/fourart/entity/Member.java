@@ -1,19 +1,19 @@
 package com.example.fourart.entity;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
 @Entity
 @Getter @Setter
-public class Member {
+@Table
+@NoArgsConstructor
+public class Member implements Serializable {
 
     @Id @GeneratedValue
     private Long id;
@@ -36,7 +36,16 @@ public class Member {
     @Column(name = "create_account_date")
     private LocalDateTime createDate;
 
-    public String toString(){
-        return nickname + "," + email + "," + profile_img;
+    @Column(name = "update_date")
+    private LocalDateTime updateDate;
+    @Builder
+    public Member(String nickname, String email, Role role, String profile_img,SocialLoginType socialLoginType, LocalDateTime createDate, LocalDateTime updateDate){
+        this.nickname = nickname;
+        this.email = email;
+        this.role = role;
+        this.instagram = null;
+        this.profile_img = profile_img;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
     }
 }
