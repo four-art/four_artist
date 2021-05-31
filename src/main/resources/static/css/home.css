@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
+
+body{
+    background-color: rgb(255, 255, 255);
+}
+a{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    
+}
+
+
+.icon{
+    position: absolute;
+    margin-left: 107px;
+    z-index: 1;
+}
+input{
+  
+    margin: 0 10px 0 11px;
+    width: 245px;
+    height: 40px;
+    padding: 10px 15px 10px 40px;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.20);
+    background-color: #ffffff;
+}
+input:focus{
+    outline: none;
+}
+
+
+
+
+.bookmark{
+    width: 20px;
+  height: 25px;
+  margin: 7px 0 8px 10px;
+  object-fit: contain;
+}
+.navbar{
+    padding: 10px 20px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+
+}
+
+
+.navbar ul{
+    flex: 1;
+    text-align: right;
+
+}
+
+.navbar ul li{
+    display: inline-block;
+    margin: 0 30px;
+}
+
+.navbar .logo{
+    font-size: 35px;
+    color: black;
+    font-family: 'Nanum';
+}
+.mobile-list{
+    display: none;
+}
+@media only screen and (max-width:800px){
+    
+    .mobile-list{
+        background-color: rgb(0, 0, 0);
+        display: block;
+        color: black;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+    }
+    .mobile-list i{
+        font-size: 7vmin;
+        cursor: pointer;
+    }
+    .mobile-list li img{
+        width: 20.5px;
+        font-size: 7vmin;
+        cursor: pointer;
+    }
+    
+    .mobile-list a li img:hover{
+        width: 25px;
+        
+    }
+    
+    
+    
+}
