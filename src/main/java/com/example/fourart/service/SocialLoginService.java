@@ -115,12 +115,5 @@ public class SocialLoginService extends DefaultOAuth2UserService {
         return userAttributes;
     }
 
-    private void validateDuplicateMember(Member member){
-        Optional<Member> findMembers = memberRepository.findByEmail(member.getEmail());
-        if(!findMembers.isEmpty()){
-            throw new IllegalStateException("이미 가입된 이메일입니다.");
-        }
-    }
-
 }
 
