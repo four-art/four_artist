@@ -7,6 +7,7 @@ import com.example.fourart.service.SocialLoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
+import org.apache.commons.collections4.map.UnmodifiableMap;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Collections.*;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -41,8 +43,11 @@ public class OAuth2Controller {
     public String loginSuccess(@AuthenticationPrincipal OAuth2User oAuth2User){
         log.info("Social Login Info");
         //여기서 그냥 MemberService 호출해서 Repository 연결하면 될
-
-        log.info(oAuth2User.getAttributes().toString());
+        /**
+         * profile 어트리뷰트 가져오는 것으로 카카오,(구글,네이버 구분)
+         * 구글, 네이버 프로필 사진 저장해놓은 key 명칭이 다름
+         */
+        log.info(oAuth2User.getAttributes().getClass().getName());
         Member member = new Member();
         try{
 
@@ -53,15 +58,23 @@ public class OAuth2Controller {
                 member.setEmail(attribute.get("email").toString());
             }
             if(profile.get("is_default_image").equals(true)){
-                member.setProfile_img("");
+                member.setProfile_img("profile_image_url");
             }
             else{
                 member.setProfile_img(profile.get("profile_image_url").toString());
             }
             log.info(profile.get("nickname").toString());
         }catch(NullPointerException ex){
-            log.info("kakao 로그인 이외의 것들 구현.");
-
+            log.info("hi there~");
+            Map attribute = oAuth2User.getAttributes();
+            member.setNickname(attribute.get("name").toString());
+            member.setEmail(attribute.get("email").toString());
+            try{
+                //구글 로그인이면 이게 통과함.
+                member.setProfile_img(attribute.get("picture").toString());
+            }catch(NullPointerException nullPointerException){
+                member.setProfile_img(attribute.get("profile_image").toString());
+            }
         }
         member.setRole(Role.GUEST);
         member.setCreateDate(LocalDateTime.now());
