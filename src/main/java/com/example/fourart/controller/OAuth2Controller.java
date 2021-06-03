@@ -1,5 +1,6 @@
 package com.example.fourart.controller;
 
+import com.example.fourart.entity.InterestingSubject;
 import com.example.fourart.entity.Member;
 import com.example.fourart.entity.Role;
 import com.example.fourart.service.MemberService;
@@ -19,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.Collections.*;
 import javax.validation.Valid;
 import java.security.Principal;
@@ -76,8 +78,9 @@ public class OAuth2Controller {
         member.setCreateDate(LocalDateTime.now());
         member.setUpdateDate(LocalDateTime.now());
         member.setInstagram("");
+        member.setInterestingSubject(new ArrayList<>());
         memberService.join(member);
-        return "signup";
+        return "sign_up";
     }
 
     @GetMapping("/loginFail")

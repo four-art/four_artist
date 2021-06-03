@@ -1,18 +1,20 @@
 package com.example.fourart.entity;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.*;
+import net.minidev.json.JSONArray;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter @Setter
-@Table
-@NoArgsConstructor
 public class Member implements Serializable {
 
     @Id @GeneratedValue
@@ -21,7 +23,7 @@ public class Member implements Serializable {
     @Column(name="nickname")
     private String nickname;
 
-    @Column(name = "email",unique = true)
+    @Column(name = "email",unique = true,nullable = false)
     private String email;
 
     @Column(name = "grade")
@@ -33,19 +35,19 @@ public class Member implements Serializable {
     @Column(name = "profile_img")
     private String profile_img;
 
+    //@OneToMany(mappedBy = "HASHTAG_ID")
+    //private List<HashTag> hash_tag = new ArrayList<>();
+
+    @ElementCollection(targetClass = InterestingSubject.class)
+    @Column(name = "interest", nullable = true)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "person_interest")
+    private Collection<InterestingSubject> interestingSubject;
+
     @Column(name = "create_account_date")
     private LocalDateTime createDate;
 
     @Column(name = "update_date")
     private LocalDateTime updateDate;
-    @Builder
-    public Member(String nickname, String email, Role role, String profile_img,SocialLoginType socialLoginType, LocalDateTime createDate, LocalDateTime updateDate){
-        this.nickname = nickname;
-        this.email = email;
-        this.role = role;
-        this.instagram = null;
-        this.profile_img = profile_img;
-        this.createDate = createDate;
-        this.updateDate = updateDate;
-    }
+
 }
