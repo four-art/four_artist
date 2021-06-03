@@ -36,18 +36,16 @@ public class OAuth2Controller {
     private final MemberService memberService;
     @GetMapping({"","/"})
     public String getAuthorizationMessage(){
-        return "index";
+        return "Landing_page";
     }
 
     @GetMapping({"/loginSuccess","/success"})
     public String loginSuccess(@AuthenticationPrincipal OAuth2User oAuth2User){
-        log.info("Social Login Info");
         //여기서 그냥 MemberService 호출해서 Repository 연결하면 될
         /**
          * profile 어트리뷰트 가져오는 것으로 카카오,(구글,네이버 구분)
          * 구글, 네이버 프로필 사진 저장해놓은 key 명칭이 다름
          */
-        log.info(oAuth2User.getAttributes().getClass().getName());
         Member member = new Member();
         try{
 
@@ -63,9 +61,7 @@ public class OAuth2Controller {
             else{
                 member.setProfile_img(profile.get("profile_image_url").toString());
             }
-            log.info(profile.get("nickname").toString());
         }catch(NullPointerException ex){
-            log.info("hi there~");
             Map attribute = oAuth2User.getAttributes();
             member.setNickname(attribute.get("name").toString());
             member.setEmail(attribute.get("email").toString());
@@ -86,6 +82,6 @@ public class OAuth2Controller {
 
     @GetMapping("/loginFail")
     public String loginFail(){
-        return "loginFail";
+        return "Landing_page";
     }
 }
