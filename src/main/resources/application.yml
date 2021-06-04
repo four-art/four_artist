@@ -8,11 +8,11 @@ spring:
       client:
         registration:
           google:
-            client-id: 892081326364-6qjj1qiei6i4sidmrcv1fdp2h3v8ilo3.apps.googleusercontent.com
-            client-secret: rcLOgY9kqXgrLU5k5cU0DR2O
+            client-id: my_id
+            client-secret: my_secret
           facebook:
-            client-id: 285297796589349
-            client-secret: 6deeeea39fb623654e85d813b6edf679
+            client-id: my_id
+            client-secret: my_secret
   thymeleaf:
     prefix=classpath: templates/
     suffix: .html
@@ -38,11 +38,11 @@ spring:
 custom:
   oauth2:
     kakao:
-      client-id: be7ef71e584d254b94a84c6812e7844b
-      client-secret: qEDjregoc8ilshWaegEhBgPlwBXOkZYV
+      client-id: my_id
+      client-secret: my_secret
     naver:
-      client-id: 1z9rhvy394bWVVY_CRI1
-      client-secret: QbIqI26mQA
+      client-id: my_id
+      client-secret: my_secret
 logging.level:
   org.hibernate.SQL: debug
   org.springframework.security: DEBUG
