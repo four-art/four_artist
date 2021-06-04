@@ -92,7 +92,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .scope("email","profile")
                     .build();
         }
-        if("FACEBOOK".equals(client)){
+        if("facebook".equals(client)){
             OAuth2ClientProperties.Registration registration = clientProperties.getRegistration().get("facebook");
             return CommonOAuth2Provider.FACEBOOK.getBuilder(client)
                     .clientId(registration.getClientId())
