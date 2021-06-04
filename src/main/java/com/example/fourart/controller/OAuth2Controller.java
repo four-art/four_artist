@@ -83,6 +83,7 @@ public class OAuth2Controller {
         return "sign_up";
     }
 
+    @PostMapping()
     @GetMapping("/loginFail")
     public String loginFail(){
         return "Landing_page";
