@@ -39,5 +39,5 @@ out/
 ###
 *.p12
 ### secrets ###
-application.properties
-**/src/main/resources/application.yml
+*.properties
+*.yml
