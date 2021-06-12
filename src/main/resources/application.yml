@@ -51,9 +51,9 @@ logging.level:
 
 server:
   ssl:
-    key-store: 4rt-keystore.p12
-    key-store-type: PKCS12
-    key-store-password: tlsghdcjf41!
-    key-alias: spring
+    key-store: "my_key-store"
+    key-store-type: "my_key-store-type"
+    key-store-password: "my_key"
+    key-alias: "my_key-alias"
   port: 8443
 # org.hibernate.type: trace
