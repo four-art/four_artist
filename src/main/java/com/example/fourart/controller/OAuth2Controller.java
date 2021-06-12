@@ -3,22 +3,29 @@ package com.example.fourart.controller;
 import com.example.fourart.entity.InterestingSubject;
 import com.example.fourart.entity.Member;
 import com.example.fourart.entity.Role;
+import com.example.fourart.service.InstaConnectService;
 import com.example.fourart.service.MemberService;
 import com.example.fourart.service.SocialLoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
 import org.apache.commons.collections4.map.UnmodifiableMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Collections.*;
@@ -34,8 +41,9 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class OAuth2Controller {
 
-    private final SocialLoginService socialLoginService;
+    private final InstaConnectService instaConnectService;
     private final MemberService memberService;
+
     @GetMapping({"","/"})
     public String getAuthorizationMessage(){
         return "Landing_page";
@@ -83,7 +91,17 @@ public class OAuth2Controller {
         return "sign_up";
     }
 
-    @PostMapping()
+    @GetMapping("/insta_conn_success")
+    public String instagramConnect(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Member member = (Member) authentication.getPrincipal();
+        log.info("hello");
+        return "";
+    }
+
+    @PostMapping("/insta_conn_success")
+
+
     @GetMapping("/loginFail")
     public String loginFail(){
         return "Landing_page";

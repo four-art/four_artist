@@ -42,8 +42,6 @@ import static com.example.fourart.entity.SocialLoginType.KAKAO;
 @Transactional(readOnly = true)
 public class SocialLoginService extends DefaultOAuth2UserService {
 
-    @Autowired
-    MemberRepository memberRepository;
 
     private String USER_INFO_URI_MISSING_ERROR = "user_info_uri_is_missed";
     private static final ParameterizedTypeReference<Map<String, Object>>
