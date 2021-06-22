@@ -29,10 +29,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.*;
 import java.net.http.HttpClient;
 import java.util.ArrayList;
@@ -45,6 +42,8 @@ import java.util.Collection;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import static org.springframework.http.HttpHeaders.USER_AGENT;
 
 @Controller
 @Slf4j
@@ -137,10 +136,43 @@ public class OAuth2Controller {
 
 
         log.info(oToken.getAccess_token());
-        return "home";
+        log.info(oToken.getUser_id().toString());
+
+        return "redirect:getInstaUsername?user_id="+oToken.getUser_id()+"&access_token="+oToken.getAccess_token();
+    }
+    @GetMapping("/getInstaUsername")
+    public String getInstaUsername(@RequestParam("user_id") Long user_id,@RequestParam("access_token") String accessToken,Model model) throws IOException {
+
+        log.info("00000000000000000");
+        log.info(user_id.toString());
+        log.info(accessToken);
+
+        String sUrl = "https://graph.instagram.com/me?fields=id,username&access_token=";
+        URL url = new URL(sUrl+accessToken);
+        HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        con.setRequestProperty("User-Agent", USER_AGENT); // add request header
+        int responseCode = con.getResponseCode();
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        log.info("hhhhhhhhhh");
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        String result = response.toString();
+        String[] userInfo = result.split(",");
+        String tempUserName = userInfo[1];
+        String userName = tempUserName.split(":")[1];
+        userName = userName.replace("\"","");
+        userName = userName.substring(0,userName.length()-1);
+        log.info(userName);
+        return "redirect:https://www.instagram.com/"+userName;
     }
     @GetMapping("/loginFail")
     public String loginFail(){
         return "Landing_page";
     }
+
 }
