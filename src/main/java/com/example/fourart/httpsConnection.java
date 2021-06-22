@@ -1,35 +1,36 @@
 package com.example.fourart;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 
-public class httpConnection {
+public class httpsConnection {
     public static final String ENCODING = "UTF-8";
-    private httpConnection(){};
-    private static class httpConnection_Singleton{
-        private static final httpConnection instance = new httpConnection();
+    private httpsConnection(){};
+    private static class httpsConnection_Singleton{
+        private static final httpsConnection_Singleton instance = new httpsConnection_Singleton();
     }
 
-    public static httpConnection getInstance(){
-        return httpConnection_Singleton.instance;
+    public static httpsConnection_Singleton getInstance(){
+        return httpsConnection_Singleton.instance;
     }
 
     //GET
     public StringBuffer HttpGetConnection(String API_URL) throws IOException{
         StringBuffer response = new StringBuffer();
         URL url = new URL(API_URL);
-        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+        HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
         connection.setRequestMethod("GET");
 
-        return responseHttp(connection);
+        return responseHttps(connection);
     }
     //POST
     public StringBuffer HttpPostConnection(String API_URL, Map<String, String> params) throws IOException{
         URL url = new URL(API_URL);
-        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+        HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
         connection.setRequestMethod("POST");
         connection.setDoOutput(true);
 
@@ -50,11 +51,11 @@ public class httpConnection {
         bw.write(sb.toString());
         bw.flush();
         bw.close();
-        return responseHttp(connection);
+        return responseHttps(connection);
     }
 
     //서버로 요청 보내기
-    public StringBuffer responseHttp(HttpURLConnection connection) throws IOException{
+    public StringBuffer responseHttps(HttpsURLConnection connection) throws IOException{
         StringBuffer response = new StringBuffer();
 
         int responseCode = connection.getResponseCode();
