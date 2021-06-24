@@ -55,7 +55,7 @@ public class OAuth2Controller {
 
             LinkedHashMap attribute = oAuth2User.getAttribute("kakao_account");
             LinkedHashMap profile = (LinkedHashMap) attribute.get("profile");
-            member.setNickname(profile.get("nickname").toString());
+            //member.setNickname(profile.get("nickname").toString());
             if(attribute.get("has_email").equals(true)){
                 member.setEmail(attribute.get("email").toString());
             }
@@ -68,7 +68,7 @@ public class OAuth2Controller {
             member.setSocialLoginType(SocialLoginType.KAKAO);
         }catch(NullPointerException ex){
             Map attribute = oAuth2User.getAttributes();
-            member.setNickname(attribute.get("name").toString());
+            //member.setNickname(attribute.get("name").toString());
             member.setEmail(attribute.get("email").toString());
             try{
                 //구글 로그인이면 이게 통과함.
@@ -124,7 +124,6 @@ public class OAuth2Controller {
     }
     @GetMapping("/getInstaUsername")
     public String getInstaUsername(@RequestParam("user_id") Long user_id,@RequestParam("access_token") String accessToken,Model model) throws IOException {
-
 
         String sUrl = "https://graph.instagram.com/me?fields=id,username&access_token=";
         URL url = new URL(sUrl+accessToken);
