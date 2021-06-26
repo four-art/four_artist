@@ -1,19 +1,91 @@
 package com.example.fourart.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+public enum HashTag {
+    NOTICE(0),
+    CONTEMPORARYDANCE(1),
+    KOREANDANCE(2),
+    BALLET(3),
+    STREETDANCE(4),
+    BROADCASTDANCE(5),
+    CHOREOGRAPHER(6),
+    PERFORMANCE(7),
+    CLASSICAL(101),
+    CONTEMPORARYMUSIC(102),
+    POPULARMUSIC(103),
+    JAZZ(104),
+    ELECTRONICMUSIC(105),
+    TRADITIONALMUSIC(106),
+    VIDEOMUSIC(107),
+    MUSICAL(108),
+    EDM(109),
+    COMPOSING(110),
+    ARRANGEMENT(111),
+    LYRICIST(112),
+    CONDUCTING(113),
+    MIDI(114),
+    SOUNDDESIGN(115),
+    VIOLIN(116),
+    VIOLA(117),
+    CELLO(118),
+    CONTRABASS(119),
+    FLUTE(120),
+    OBOE(121),
+    CLARINET(122),
+    BASSOON(123),
+    SAXOPHONE(124),
+    HORN(125),
+    TRUMPET(126),
+    TROMBONE(127),
+    TUBA(128),
+    ENGLISHHORN(129),
+    PIANO(130),
+    CHAMBALO(131),
+    ORGAN(132),
+    PERCUSSION(133),
+    VIBRAPHONE(134),
+    MARIMBA(135),
+    GLOCKENSPIEL(136),
+    XYLOPHONE(137),
+    TIMPANI(138),
+    DRUMS(139),
+    VOCALMUSIC(140),
+    GUITAR(141),
+    BASS(142),
+    KEYS(143),
+    DRUMSET(144),
+    VOCALS(145),
+    TRADITIONALINSTRUMENTS(146),
+    SORI(147),
+    WATERCOLOR(201),
+    OILPAINTING_AND_ACRYLIC(202),
+    INKPAINTING(203),
+    DIGITAL_AND_PRINTING(204),
+    SPECIALMAKEUP(205),
+    CRAFTS(206),
+    PIECES(207),
+    INSTALLATIONS(208),
+    PROPS(209),
+    PHOTOGRAPH(210),
+    VIDEO(211),
+    MEDIA(212),
+    MULTI_PURPOSE_AND_CONVERGENCE(213),
+    ANIME(214),
+    OUTFITS(215),
+    FASHION(216),
+    MODELS(217),
+    MOVIES(301),
+    DRAMAS(302),
+    DOCUMENTARIES(303),
+    PLAYS(304),
+    BOOKS(305),
+    WRITERS(306),
+    SCENARIOS(307),
+    DIRECTING(308),
+    DIRECTORS(309),
+    ACTORS(310);
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
-public class HashTag {
-    @Id @GeneratedValue
-    @Column(name = "HASHTAG_ID")
-    private Long id;
-
-    @Column(name = "hash_tag")
-    private String tagName;
+    private int idx;
+    HashTag(int i) {
+        this.idx = i;
+    }
 }

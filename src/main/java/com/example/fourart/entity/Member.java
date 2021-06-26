@@ -18,6 +18,7 @@ import java.util.List;
 public class Member implements Serializable {
 
     @Id @GeneratedValue
+    @Column(name = "member_id")
     private Long id;
 
     @Column(name="nickname")
@@ -37,8 +38,6 @@ public class Member implements Serializable {
 
     @Column(name = "social_login_type")
     private SocialLoginType socialLoginType;
-    //@OneToMany(mappedBy = "HASHTAG_ID")
-    //private List<HashTag> hash_tag = new ArrayList<>();
 
     @ElementCollection(targetClass = InterestingSubject.class)
     @Column(name = "interest", nullable = true)
