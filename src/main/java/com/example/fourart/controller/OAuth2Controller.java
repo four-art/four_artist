@@ -9,6 +9,7 @@ import com.example.fourart.service.MemberService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -37,7 +38,8 @@ public class OAuth2Controller {
 
     private final InstaConnectService instaConnectService;
     private final MemberService memberService;
-
+    @Value("${custom.oauth2.instagram.client-id}") String instaClientId;
+    @Value("${custom.oauth2.instagram.client-secret}") String instaClientSecret;
     @GetMapping({"","/"})
     public String getAuthorizationMessage(){
         return "Landing_page";
@@ -88,6 +90,15 @@ public class OAuth2Controller {
         return "sign_up";
     }
 
+    @GetMapping("/insta_request")
+    public String instaRequest(){
+        String BASE_URL = "https://api.instagram.com/oauth/authorize?";
+        String clientId=instaClientId;
+        String redirectUri="https://localhost:8443/insta_conn_success";
+        String scope = "user_profile";
+        String responseType = "code";
+        return "redirect:" + BASE_URL + "client_id="+clientId +"&" + "redirect_uri=" + redirectUri +"&scope="+scope +"&response_type="+responseType;
+    }
     @GetMapping("/insta_conn_success")
     public String instagramConnect(@RequestParam String code) throws IOException {
 
@@ -96,8 +107,8 @@ public class OAuth2Controller {
         headers.add("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
-        params.add("client_id","213487120598037");
-        params.add("client_secret","988a59949faa7ef4d301c95d1f0cd9a7");
+        params.add("client_id",instaClientId);
+        params.add("client_secret",instaClientSecret);
         params.add("code",code);
         params.add("grant_type","authorization_code");
         params.add("redirect_uri","https://localhost:8443/insta_conn_success");
