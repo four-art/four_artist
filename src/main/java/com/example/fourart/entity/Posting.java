@@ -21,4 +21,10 @@ public class Posting {
     @Column(name = "category")
     private PostingCategory postingCategory;
 
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "content", columnDefinition = "TEXT")
+    private String content;
+
 }
