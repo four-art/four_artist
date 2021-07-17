@@ -30,10 +30,7 @@ public class MemberService {
         }
     }
     public Member findMembers(String email){
-        log.info("aaaaaaaaaa");
-        log.info(email);
         return memberRepository.findByEmail(email);
-
     }
 
 }

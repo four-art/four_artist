@@ -9,6 +9,8 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Setter
 public class PostingForm {
+
+    private Long id;
     @NotEmpty(message = "게시글의 제목을 입력해주세요.")
     private String title;
 
