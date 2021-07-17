@@ -3,18 +3,18 @@ package com.example.fourart.controller;
 import com.example.fourart.entity.Posting;
 import com.example.fourart.form.PostingForm;
 import com.example.fourart.service.PostingService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("api")
+@Api(tags={"게시판 API"})
 public class PostingController {
     private final PostingService postingService;
 

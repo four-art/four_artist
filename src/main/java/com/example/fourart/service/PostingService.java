@@ -36,10 +36,9 @@ public class PostingService{
     }
 
     public void updatePosting(Long id, String title, String content) {
-
+    }
 
     public void deletePost(Long id) {
         postingRepository.deleteById(id);
-
     }
 }
