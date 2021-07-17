@@ -13,4 +13,9 @@ import java.util.Optional;
 public interface MemberRepository extends JpaRepository<Member,Long>{
     Member findByEmail(String email);
     List<Member> findAllByEmail(String email);
+    Long join(Member member);
+
+    void validateDuplicateMember(Member member);
+    Member findMembers(String email);
+
 }
