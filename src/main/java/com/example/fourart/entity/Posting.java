@@ -25,9 +25,16 @@ public class Posting {
     @Column(name = "category")
     private PostingCategory postingCategory;
 
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "content", columnDefinition = "TEXT")
+    private String content;
+
     @Column(name = "create_account_date")
     private LocalDateTime createDate;
 
     @Column(name = "update_date")
     private LocalDateTime updateDate;
+
 }
