@@ -15,6 +15,7 @@ import javax.validation.Valid;
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
+
     @Autowired
     private final MemberRepository memberRepository;
 

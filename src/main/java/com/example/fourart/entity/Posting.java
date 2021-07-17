@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Getter @Setter
@@ -19,6 +20,5 @@ public class Posting {
 
     @Column(name = "category")
     private PostingCategory postingCategory;
-
 
 }
