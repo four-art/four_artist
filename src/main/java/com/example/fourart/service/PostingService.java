@@ -1,6 +1,5 @@
 package com.example.fourart.service;
 
-import com.example.fourart.repository.PostingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
