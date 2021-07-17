@@ -21,4 +21,5 @@ public class Posting {
     @Column(name = "category")
     private PostingCategory postingCategory;
 
+    //댓글은 다른 엔티티로 관리할 예정
 }
