@@ -1,9 +1,6 @@
 package com.example.fourart.controller;
 
 import com.example.fourart.entity.InstaOAuth2Token;
-import com.example.fourart.entity.Member;
-import com.example.fourart.entity.SocialLoginType;
-import com.example.fourart.service.MemberService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,10 +9,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
@@ -29,8 +22,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import static org.springframework.http.HttpHeaders.USER_AGENT;
 
@@ -38,7 +29,6 @@ import static org.springframework.http.HttpHeaders.USER_AGENT;
 @Slf4j
 @RequiredArgsConstructor
 public class InstaConnectController {
-    private final MemberService memberService;
 
     @Value("${custom.oauth2.instagram.client-id}") String instaClientId;
     @Value("${custom.oauth2.instagram.client-secret}") String instaClientSecret;

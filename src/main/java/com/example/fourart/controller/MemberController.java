@@ -16,7 +16,6 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class MemberController {
 
-    @Autowired
     private final MemberRepository memberRepository;
 
     @PostMapping(value = "/members/insta")
@@ -27,8 +26,8 @@ public class MemberController {
         Member member = new Member();
         member.setInstagram(memberForm.getInstagram());
 
-        memberRepository.join(member);
-        return "redirect:/home";
+        memberRepository.save(member);
+        return "Landing_page";
 
     }
 }
