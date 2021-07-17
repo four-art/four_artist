@@ -5,6 +5,7 @@ import com.example.fourart.form.PostingForm;
 import com.example.fourart.service.PostingService;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("api")
+@Slf4j
 @Api(tags={"게시판 API"})
 public class PostingController {
     private final PostingService postingService;
@@ -30,7 +32,18 @@ public class PostingController {
         postingService.savePosting(posting);
         return "redirect:/teams";
     }
+    @GetMapping(value = "/posting/wanted/new")
+    public String createWantedForm(Model model){
+        model.addAttribute("form",new PostingForm());
+        return "posting/createTeamForm";
+    }
 
+    @PostMapping(value = "/posting/wanted/new")
+    public String createWanted(PostingForm form){
+        Posting posting = new Posting();
+        postingService.savePosting(posting);
+        return "redirect:/teams";
+    }
     @GetMapping(value = "/postings")
     public String list(Model model){
         //postingService에서 findPostings 구현

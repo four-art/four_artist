@@ -24,18 +24,21 @@ public class PostingService{
      */
     @Transactional
     public void savePosting(Posting posting) {
-
+        postingRepository.save(posting);
     }
 
     public List<Posting> findPostings() {
-        return null;
+        return postingRepository.findAll();
     }
 
     public Object findOne(Long postingId) {
-        return null;
+        return postingRepository.getOne(postingId);
     }
 
     public void updatePosting(Long id, String title, String content) {
+        Posting posting = postingRepository.getOne(id);
+        posting.setTitle(title);
+        posting.setContent(content);
     }
 
     public void deletePost(Long id) {
