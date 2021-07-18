@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -20,7 +21,7 @@ public class PostingService{
 
 
     /**
-     *  TODO: 글 삭제, 검색 기능 구현 예
+     *  TODO: 글 검색 기능 구현
      */
     @Transactional
     public void savePosting(Posting posting) {
