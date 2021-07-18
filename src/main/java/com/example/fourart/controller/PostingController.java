@@ -63,5 +63,9 @@ public class PostingController {
         postingService.updatePosting(form.getId(),form.getTitle(),form.getContent());
         return "redirect:/postings";
     }
+    @PostMapping(value="/posting/delete")
+    public void deletePosting(Long id){
+        postingService.deletePost(id);
+    }
 
 }
