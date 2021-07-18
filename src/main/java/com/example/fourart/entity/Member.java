@@ -18,6 +18,7 @@ import java.util.List;
 public class Member implements Serializable {
 
     @Id @GeneratedValue
+    @Column(name = "member_id")
     private Long id;
 
     @Column(name="nickname")
@@ -35,14 +36,20 @@ public class Member implements Serializable {
     @Column(name = "profile_img")
     private String profile_img;
 
-    //@OneToMany(mappedBy = "HASHTAG_ID")
-    //private List<HashTag> hash_tag = new ArrayList<>();
+    @Column(name = "social_login_type")
+    private SocialLoginType socialLoginType;
 
     @ElementCollection(targetClass = InterestingSubject.class)
     @Column(name = "interest", nullable = true)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "person_interest")
     private Collection<InterestingSubject> interestingSubject;
+
+    @ElementCollection(targetClass = HashTag.class)
+    @Column(name = "hashtag", nullable = true)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "member_hashtag")
+    private Collection<HashTag> memberHashTag;
 
     @Column(name = "create_account_date")
     private LocalDateTime createDate;

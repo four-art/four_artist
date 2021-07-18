@@ -11,8 +11,9 @@ spring:
             client-id: 892081326364-6qjj1qiei6i4sidmrcv1fdp2h3v8ilo3.apps.googleusercontent.com
             client-secret: rcLOgY9kqXgrLU5k5cU0DR2O
           facebook:
-            client-id: 285297796589349
+            client-id: 1952196254945531
             client-secret: 6deeeea39fb623654e85d813b6edf679
+
   thymeleaf:
     prefix=classpath: templates/
     suffix: .html
@@ -33,7 +34,7 @@ spring:
       ddl-auto: create
     properties:
       hibernate:
-          #show_sql: true
+        #show_sql: true
         format_sql: true
 custom:
   oauth2:
@@ -43,10 +44,14 @@ custom:
     naver:
       client-id: 1z9rhvy394bWVVY_CRI1
       client-secret: QbIqI26mQA
+    instagram:
+      client-id: 213487120598037
+      client-secret: 988a59949faa7ef4d301c95d1f0cd9a7
 logging.level:
   org.hibernate.SQL: debug
   org.springframework.security: DEBUG
   org.springframework.web: DEBUG
 
-
+server:
+  port: 8443
 # org.hibernate.type: trace

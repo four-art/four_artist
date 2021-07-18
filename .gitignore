@@ -37,7 +37,7 @@ out/
 .vscode/
 
 ###
-
+*.p12
 ### secrets ###
-application.properties
-application.yml
+*.properties
+*.yml
