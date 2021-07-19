@@ -67,5 +67,10 @@ public class PostingController {
     public void deletePosting(Long id){
         postingService.deletePost(id);
     }
+    @PostMapping(value="/posting/{postingId}/viewCountPlus")
+    public Long viewCountPlus(@PathVariable("postingId") Long postingId){
+        long viewCount = postingService.viewCountUp(postingId);
+        return viewCount;
+    }
 
 }
