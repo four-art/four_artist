@@ -44,16 +44,14 @@ custom:
     naver:
       client-id: 1z9rhvy394bWVVY_CRI1
       client-secret: QbIqI26mQA
+    instagram:
+      client-id: 213487120598037
+      client-secret: 988a59949faa7ef4d301c95d1f0cd9a7
 logging.level:
   org.hibernate.SQL: debug
   org.springframework.security: DEBUG
   org.springframework.web: DEBUG
 
 server:
-  ssl:
-    key-store: 4rt-keystore.p12
-    key-store-type: PKCS12
-    key-store-password: tlsghdcjf41!
-    key-alias: spring
   port: 8443
 # org.hibernate.type: trace

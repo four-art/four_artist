@@ -2,14 +2,13 @@ package com.example.fourart.repository;
 
 import com.example.fourart.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
-import java.util.Optional;
 
-
+@Repository
 public interface MemberRepository extends JpaRepository<Member,Long>{
-    List<Member> findByEmail(String email);
+    List<Member> findAllByEmail(@Param("email")String email);
+    Member findByEmail(@Param("email")String email);
 }
