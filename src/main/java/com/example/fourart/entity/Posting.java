@@ -28,6 +28,9 @@ public class Posting {
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
+    @Column(name = "view_count")
+    private Long viewCount;
+
     @Column(name = "create_account_date")
     private LocalDateTime createDate;
 
