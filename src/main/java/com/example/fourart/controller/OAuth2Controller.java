@@ -40,10 +40,7 @@ public class OAuth2Controller {
     private final InstaConnectService instaConnectService;
     private final MemberService memberService;
 
-    @GetMapping({"","/"})
-    public String getAuthorizationMessage(){
-        return "Landing_page";
-    }
+
 
     @GetMapping({"/loginSuccess","/success"})
     public Member loginSuccess(@AuthenticationPrincipal OAuth2User oAuth2User){
