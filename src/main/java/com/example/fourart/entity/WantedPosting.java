@@ -8,9 +8,7 @@ import java.util.Collection;
 
 @Entity
 @Getter @Setter
-public class wantedPosting extends Posting {
-    @Id @GeneratedValue
-    public Long id;
+public class WantedPosting extends Posting {
 
     @ElementCollection(targetClass = HashTag.class)
     @Column(name = "hashtag", nullable = true)
