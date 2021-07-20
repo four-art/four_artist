@@ -12,9 +12,11 @@ public class Comment {
     @Id @GeneratedValue
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Member author;
+    @Column(name = "comment_author")
+    private String author;
+
+    @Column(name = "target_posting_id")
+    private Long targetPostingId;
 
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
