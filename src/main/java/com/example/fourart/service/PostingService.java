@@ -45,5 +45,5 @@ public class PostingService{
     public void deletePost(Long id) {
         postingRepository.deleteById(id);
     }
-    public Long viewCountUp(Long id){ return postingRepository.updateView(id);}
+    public void viewCountUp(Long id){ postingRepository.updateView(id);}
 }

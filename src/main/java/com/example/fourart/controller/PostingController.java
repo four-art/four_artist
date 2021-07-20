@@ -69,8 +69,7 @@ public class PostingController {
     }
     @PostMapping(value="/posting/{postingId}/viewCountPlus")
     public Long viewCountPlus(@PathVariable("postingId") Long postingId){
-        long viewCount = postingService.viewCountUp(postingId);
-        return viewCount;
+        return 0l;
     }
 
 }

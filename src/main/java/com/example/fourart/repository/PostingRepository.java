@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PostingRepository extends JpaRepository<Posting, Long> {
     @Modifying
-    @Query("update Posting p set p.viewCount = p.viewCount + 1 where p.id = :id")
-    long updateView(Long id);
+    @Query("update Posting p set p.viewCount = p.viewCount + 1l where p.id = :id")
+    void updateView(Long id);
 }
