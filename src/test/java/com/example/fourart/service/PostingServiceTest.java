@@ -34,8 +34,8 @@ class PostingServiceTest {
         wantedPosting.setViewCount(0l);
         postingService.savePosting(wantedPosting);
         viewCountUp();
+        updatePosting(wantedPosting);
     }
-
 
 
     @Test
@@ -46,7 +46,7 @@ class PostingServiceTest {
     }
 
 
-    @Test
+
     void deletePost() {
         Posting posting = new WantedPosting();
         posting.setTitle("test");
@@ -65,6 +65,9 @@ class PostingServiceTest {
         postingService.viewCountUp(posting.getId());
         postingService.viewCountUp(posting.getId());
         postingService.viewCountUp(posting.getId());
+    }
 
+    void updatePosting(Posting posting) {
+        postingService.updatePosting(posting.getId(),"UPDATE","FDSAFSAFASFAAAAAAAAAA");
     }
 }

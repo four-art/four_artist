@@ -35,15 +35,14 @@ public class PostingService{
     public Object findOne(Long postingId) {
         return postingRepository.getOne(postingId);
     }
-
+    @Transactional
     public void updatePosting(Long id, String title, String content) {
-        Posting posting = postingRepository.getOne(id);
-        posting.setTitle(title);
-        posting.setContent(content);
+        postingRepository.updatePosting(id,title,content);
     }
-
+    @Transactional
     public void deletePost(Long id) {
         postingRepository.deleteById(id);
     }
+    @Transactional
     public void viewCountUp(Long id){ postingRepository.updateView(id);}
 }
