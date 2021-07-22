@@ -7,11 +7,13 @@ import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Getter @Setter
 @DiscriminatorColumn
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DynamicInsert
 public class Posting {
     @Id
@@ -36,8 +38,14 @@ public class Posting {
     @ColumnDefault("0")
     private Long viewCount;
 
+    @ElementCollection(targetClass = HashTag.class)
+    @Column(name = "hashtag", nullable = true)
+    @Enumerated(EnumType.STRING)
+    private Set<HashTag> wantedPostingHashtag;
+
     @Column(name = "create_account_date")
     private LocalDateTime createDate;
+
 
     @Column(name = "update_date")
     private LocalDateTime updateDate;

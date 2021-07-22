@@ -1,15 +1,20 @@
 package com.example.fourart.service;
 
 
+import com.example.fourart.entity.HashTag;
 import com.example.fourart.entity.Posting;
 import com.example.fourart.repository.PostingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -45,4 +50,12 @@ public class PostingService{
     }
     @Transactional
     public void viewCountUp(Long id){ postingRepository.updateView(id);}
+    @Transactional
+    public List<Long> searchPostings(String toFind){
+        return postingRepository.searchPostings(toFind);
+    }
+    @Transactional
+    public Set<Long>  searchByPostingHashTag(HashTag hashTag){
+        return postingRepository.searchByPostingHashTag(hashTag);
+    }
 }
