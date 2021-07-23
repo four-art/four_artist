@@ -2,14 +2,17 @@ package com.example.fourart.service;
 
 import com.example.fourart.entity.HashTag;
 import com.example.fourart.entity.Member;
+import com.example.fourart.entity.MemberHashTag;
 import com.example.fourart.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -17,7 +20,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
-
+    private EntityManager em;
     @Transactional
     public Long join(Member member){
         validateDuplicateMember(member);
@@ -35,8 +38,24 @@ public class MemberService {
     public Member findMembers(String email){
         return memberRepository.findByEmail(email);
     }
-    public void addHashTag(Long id,List<HashTag> hashTagList){
+    public void addHashTag(Long id,HashTag hashTag){
         Member member = memberRepository.getOne(id);
-        member.setMemberHashTag(hashTagList);
+        MemberHashTag memberHashTag = new MemberHashTag();
+        memberHashTag.setMember(member);
+        memberHashTag.setMemberHashTag(hashTag);
+        em.persist(memberHashTag);
+    }
+    public void addHashTagList(Long id, List<HashTag> hashTagList){
+        for(HashTag h : hashTagList){
+            addHashTag(id,h);
+        }
+    }
+    @Transactional
+    public List<Long> memberPostings(String toFind){
+        return memberRepository.searchMembers(toFind);
+    }
+    @Transactional
+    public Set<Long> searchByMemberHashTag(HashTag hashTag){
+        return memberRepository.searchByMemberHashTag(hashTag);
     }
 }
