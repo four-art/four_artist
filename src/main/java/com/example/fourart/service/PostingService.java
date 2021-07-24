@@ -24,11 +24,9 @@ public class PostingService{
 
     private final PostingRepository postingRepository;
 
-
     /**
      *  TODO: 글 검색 기능 구현
      */
-    @Transactional
     public void savePosting(Posting posting) {
         postingRepository.save(posting);
     }
@@ -40,25 +38,19 @@ public class PostingService{
     public Object findOne(Long postingId) {
         return postingRepository.getOne(postingId);
     }
-    @Transactional
     public void updatePosting(Long id, String title, String content) {
         postingRepository.updatePosting(id,title,content);
     }
-    @Transactional
     public void deletePost(Long id) {
         postingRepository.deleteById(id);
     }
-    @Transactional
     public void viewCountUp(Long id){ postingRepository.updateView(id);}
-    @Transactional
     public List<Long> searchPostings(String toFind){
         return postingRepository.searchPostings(toFind);
     }
-    @Transactional
-    public Set<Long>  searchByPostingHashTag(HashTag hashTag){
-        return postingRepository.searchByPostingHashTag(hashTag);
-    }
-    @Transactional
+//    public Set<Long>  searchByPostingHashTag(HashTag hashTag){
+//        return postingRepository.searchByPostingHashTag(hashTag);
+//    }
     public Set<Long> searchAuthor(String toFind){
         return postingRepository.searchAuthor(toFind);
     }

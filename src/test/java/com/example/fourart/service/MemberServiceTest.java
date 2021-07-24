@@ -9,21 +9,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-
+import java.util.ArrayList;
+import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class MemberServiceTest {
 
     @Autowired
     MemberRepository memberRepository;
+    @Autowired
+    MemberService memberService;
 
-
-    @BeforeEach
+    @Test
     void setUp() {
         Member m1 = new Member();
 
@@ -33,31 +35,31 @@ class MemberServiceTest {
         m1.setInstagram("bit_cheol");
         m1.setProfile_img(null);
         m1.setSocialLoginType(SocialLoginType.KAKAO);
-
         m1.setInterestingSubject(null);
         m1.setCreateDate(LocalDateTime.now());
         m1.setUpdateDate(LocalDateTime.now());
-        MemberHashTag mh1 = new MemberHashTag();
-        mh1.setMemberHashTag(HashTag.ANIME);
-        mh1.setMemberHashTag(HashTag.BALLET);
-        mh1.setMemberHashTag(HashTag.DOCUMENTARIES);
-        mh1.setMember(m1);
-
+        List<HashTag> mh1 = new ArrayList<>();
+        mh1.add(HashTag.ANIME);
+        mh1.add(HashTag.BALLET);
+        mh1.add(HashTag.DOCUMENTARIES);
+        memberService.join(m1);
+        memberService.addHashTagList(m1.getId(),mh1);
         Member m2 = new Member();
-        m2.setNickname("gooder");
-        m2.setEmail("shc950217@naver.com");
+        m2.setNickname("gooder2");
+        m2.setEmail("tlsghdcjf@naver.com");
         m2.setRole(Role.ADMIN);
-        m2.setInstagram("bit_cheol");
+        m2.setInstagram("bit_cheol2222");
         m2.setProfile_img(null);
         m2.setSocialLoginType(SocialLoginType.KAKAO);
         m2.setInterestingSubject(null);
         m2.setCreateDate(LocalDateTime.now());
         m2.setUpdateDate(LocalDateTime.now());
-        MemberHashTag mh2 = new MemberHashTag();
-        mh2.setMemberHashTag(HashTag.ANIME);
-        mh2.setMemberHashTag(HashTag.BALLET);
-        mh2.setMemberHashTag(HashTag.DOCUMENTARIES);
-        mh2.setMember(m2);
+        List<HashTag> mh2 = new ArrayList<>();
+        mh2.add(HashTag.ANIME);
+        mh2.add(HashTag.BALLET);
+        mh2.add(HashTag.DOCUMENTARIES);
+        memberService.join(m2);
+        memberService.addHashTagList(m2.getId(),mh2);
     }
 
 //    @Test
@@ -80,9 +82,4 @@ class MemberServiceTest {
 //    void memberPostings() {
 //    }
 
-    @Test
-    void searchByMemberHashTag() {
-        System.out.println(memberRepository.searchByMemberHashTag(HashTag.ANIME).toString());
-
-    }
 }
