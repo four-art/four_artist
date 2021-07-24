@@ -10,10 +10,7 @@ import java.util.Collection;
 @Getter @Setter
 public class WantedPosting extends Posting {
 
-    @ElementCollection(targetClass = HashTag.class)
     @Column(name = "hashtag", nullable = true)
-    @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "wanted_posting_hashtag")
-    private Collection<HashTag> wantedPostingHashtag;
+    private HashTag hashtag;
 
 }
