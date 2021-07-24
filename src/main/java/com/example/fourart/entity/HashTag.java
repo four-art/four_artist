@@ -1,5 +1,9 @@
 package com.example.fourart.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
 public enum HashTag {
     NOTICE(0),
     CONTEMPORARYDANCE(1),

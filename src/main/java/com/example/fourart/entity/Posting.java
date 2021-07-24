@@ -37,10 +37,6 @@ public class Posting {
     @ColumnDefault("0")
     private Long viewCount;
 
-    @ElementCollection(targetClass = HashTag.class)
-    @Column(name = "hashtag", nullable = true)
-    @Enumerated(EnumType.STRING)
-    private Set<HashTag> wantedPostingHashtag;
 
     @Column(name = "create_account_date")
     private LocalDateTime createDate;

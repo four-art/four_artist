@@ -21,4 +21,5 @@ public class MemberHashTag {
     @Column(name = "hashtag", nullable = true)
     @Enumerated(EnumType.STRING)
     private HashTag memberHashTag;
+
 }

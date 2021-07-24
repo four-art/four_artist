@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.*;
 
 import static com.example.fourart.entity.HashTag.*;
-
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -39,7 +39,7 @@ class PostingServiceTest {
         postingService.savePosting(posting);
         viewCountUp();
         searchPostings();
-        searchByPostingHashTag();
+        //searchByPostingHashTag();
     }
 
 
@@ -85,12 +85,12 @@ class PostingServiceTest {
         System.out.println("111111111");
     }
 
-    void searchByPostingHashTag() {
-        System.out.println("111111111");
-        Set<Long> s = postingService.searchByPostingHashTag(PERFORMANCE);
-
-        System.out.print(s.toString()+"\t");
-
-        System.out.println("111111111");
-    }
+//    void searchByPostingHashTag() {
+//        System.out.println("111111111");
+//        Set<Long> s = postingService.searchByPostingHashTag(PERFORMANCE);
+//
+//        System.out.print(s.toString()+"\t");
+//
+//        System.out.println("111111111");
+//    }
 }

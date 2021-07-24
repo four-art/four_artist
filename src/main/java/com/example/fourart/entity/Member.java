@@ -15,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Member implements Serializable {
+public class Member{
 
     @Id @GeneratedValue
     @Column(name = "member_id")
@@ -39,8 +39,9 @@ public class Member implements Serializable {
     @Column(name = "social_login_type")
     private SocialLoginType socialLoginType;
 
-    @OneToMany(mappedBy = "member")
-    private List<MemberHashTag> memberHashTag = new ArrayList<>();
+//    @OneToMany(mappedBy = "member")
+//    @Enumerated(EnumType.ORDINAL)
+//    private List<MemberHashTag> memberHashTag = new ArrayList<>();
 
     @ElementCollection(targetClass = InterestingSubject.class)
     @Column(name = "interest", nullable = true)

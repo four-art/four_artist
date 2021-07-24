@@ -20,7 +20,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
-    private EntityManager em;
+    private final EntityManager em;
     @Transactional
     public Long join(Member member){
         validateDuplicateMember(member);
@@ -49,13 +49,6 @@ public class MemberService {
         for(HashTag h : hashTagList){
             addHashTag(id,h);
         }
-    }
-    @Transactional
-    public List<Long> memberPostings(String toFind){
-        return memberRepository.searchMembers(toFind);
-    }
-    @Transactional
-    public Set<Long> searchByMemberHashTag(HashTag hashTag){
-        return memberRepository.searchByMemberHashTag(hashTag);
+        em.flush();
     }
 }
