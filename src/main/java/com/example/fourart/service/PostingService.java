@@ -58,4 +58,8 @@ public class PostingService{
     public Set<Long>  searchByPostingHashTag(HashTag hashTag){
         return postingRepository.searchByPostingHashTag(hashTag);
     }
+    @Transactional
+    public Set<Long> searchAuthor(String toFind){
+        return postingRepository.searchAuthor(toFind);
+    }
 }

@@ -20,7 +20,6 @@ public class Posting {
     @GeneratedValue
     private Long id;
 
-
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member author;
@@ -45,7 +44,6 @@ public class Posting {
 
     @Column(name = "create_account_date")
     private LocalDateTime createDate;
-
 
     @Column(name = "update_date")
     private LocalDateTime updateDate;

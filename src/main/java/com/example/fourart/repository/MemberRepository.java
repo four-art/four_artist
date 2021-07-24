@@ -15,11 +15,4 @@ import java.util.Set;
 public interface MemberRepository extends JpaRepository<Member,Long>{
     List<Member> findAllByEmail(@Param("email")String email);
     Member findByEmail(@Param("email")String email);
-    @Modifying
-    @Query("select id from Member where nickname like %:toFind%")
-    List<Long> searchMembers(String toFind);
-
-    @Modifying
-    @Query("select m.id from Member m inner join MemberHashTag mh where mh.memberHashTag = :hashTag")
-    Set<Long> searchByMemberHashTag(HashTag hashTag);
 }
