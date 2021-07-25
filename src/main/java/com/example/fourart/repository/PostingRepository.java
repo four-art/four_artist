@@ -24,9 +24,9 @@ public interface PostingRepository extends JpaRepository<Posting, Long> {
     @Query("select id from Posting where content like %:toFind%")
     List<Long> searchPostings(String toFind);
 
-//    @Modifying
-//    @Query("select p.id from Posting p inner join WantedPosting wp where wp.hashtag = :hashTag")
-//    Set<Long> searchByPostingHashTag(HashTag hashTag);
+    @Modifying
+    @Query("select p.id from WantedPosting p inner join WantedPosting wp where wp.hashtag = :hashTag")
+    Set<Long> searchByPostingHashTag(HashTag hashTag);
 
     @Modifying
     @Query("select p.id from Posting p where p.author.nickname like %:toFind%")
