@@ -1,15 +1,16 @@
 package com.example.fourart.service;
 
 
-import com.example.fourart.entity.HashTag;
-import com.example.fourart.entity.Posting;
+import com.example.fourart.entity.*;
 import com.example.fourart.repository.PostingRepository;
+import com.example.fourart.repository.WantedPostingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -23,7 +24,8 @@ import java.util.Set;
 public class PostingService{
 
     private final PostingRepository postingRepository;
-
+    private final WantedPostingRepository wantedPostingRepository;
+    private final EntityManager em;
     /**
      *  TODO: 글 검색 기능 구현
      */
@@ -48,10 +50,23 @@ public class PostingService{
     public List<Long> searchPostings(String toFind){
         return postingRepository.searchPostings(toFind);
     }
-//    public Set<Long>  searchByPostingHashTag(HashTag hashTag){
-//        return postingRepository.searchByPostingHashTag(hashTag);
-//    }
+    public Set<Long>  searchByPostingHashTag(HashTag hashTag){
+        return postingRepository.searchByPostingHashTag(hashTag);
+    }
     public Set<Long> searchAuthor(String toFind){
         return postingRepository.searchAuthor(toFind);
+    }
+    public void addHashTag(Long id,HashTag hashTag){
+        WantedPosting wantedPosting = wantedPostingRepository.getOne(id);
+        WantedPostingHashTag wantedPostingHashTag = new WantedPostingHashTag();
+        wantedPostingHashTag.setWantedPosting(wantedPosting);
+        wantedPostingHashTag.setWantedPostingHashTag(hashTag);
+        em.persist(wantedPostingHashTag);
+    }
+    public void addHashTagList(Long id, List<HashTag> hashTagList){
+        for(HashTag h : hashTagList){
+            addHashTag(id,h);
+        }
+        em.flush();
     }
 }

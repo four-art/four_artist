@@ -4,6 +4,7 @@ import com.example.fourart.entity.InstaOAuth2Token;
 import com.example.fourart.entity.Member;
 import com.example.fourart.entity.Role;
 import com.example.fourart.entity.SocialLoginType;
+import com.example.fourart.secure.SecurityConfig;
 import com.example.fourart.service.InstaConnectService;
 import com.example.fourart.service.MemberService;
 import com.example.fourart.service.OAuth2Service;
