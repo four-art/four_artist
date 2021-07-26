@@ -25,7 +25,7 @@ public interface PostingRepository extends JpaRepository<Posting, Long> {
     List<Long> searchPostings(String toFind);
 
     @Modifying
-    @Query("select p.id from WantedPosting p inner join WantedPosting wp where wp.hashtag = :hashTag")
+    @Query("select p.id from WantedPosting p where p.hashtag = :hashTag")
     Set<Long> searchByPostingHashTag(HashTag hashTag);
 
     @Modifying
