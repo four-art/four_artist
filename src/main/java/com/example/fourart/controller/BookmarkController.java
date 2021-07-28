@@ -1,6 +1,6 @@
 package com.example.fourart.controller;
 
-import com.example.fourart.entity.Bookmark;
+import com.example.fourart.entity.PostingBookmark;
 import com.example.fourart.service.BookmarkService;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
@@ -16,10 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Api(tags={"북마크 API"})
 @RequestMapping("bookmark")
 public class BookmarkController {
+    /**
+     * TODO:
+     * 멤버 북마크 추가, 삭제 구현.
+     * 북마크한 게시글 보여주기.
+     * 북마크한 아티스트 보여주기.
+     */
     private final BookmarkService bookmarkService;
     @PostMapping("/new")
     public void addBookmark(@RequestBody Long postingId,@RequestBody Long memberId){
-        Bookmark bookmark = new Bookmark();
+        PostingBookmark bookmark = new PostingBookmark();
         bookmark.setPostingId(postingId);
         bookmark.setMemberId(memberId);
         bookmarkService.saveBookmark(bookmark);

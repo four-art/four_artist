@@ -1,7 +1,6 @@
 package com.example.fourart.service;
 
-import com.example.fourart.entity.Bookmark;
-import com.example.fourart.entity.Posting;
+import com.example.fourart.entity.PostingBookmark;
 import com.example.fourart.repository.BookmarkRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,13 +19,13 @@ public class BookmarkService {
     private final BookmarkRepository bookmarkRepository;
 
     @Transactional
-    public void saveBookmark(Bookmark bookmark) {
+    public void saveBookmark(PostingBookmark bookmark) {
         bookmarkRepository.save(bookmark);
     }
 
-    public List<Bookmark> findBookmarks() {
+    public List<PostingBookmark> findBookmarks() {
         return bookmarkRepository.findAll();
     }
-    public Optional<Bookmark> findBookmarksByMemberId(Long id){return bookmarkRepository.findById(id);}
+    public Optional<PostingBookmark> findBookmarksByMemberId(Long id){return bookmarkRepository.findById(id);}
     public void deleteBookmark(Long id){ bookmarkRepository.deleteById(id);}
 }
