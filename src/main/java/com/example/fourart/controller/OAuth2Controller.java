@@ -1,45 +1,24 @@
 package com.example.fourart.controller;
 
-import com.example.fourart.entity.InstaOAuth2Token;
 import com.example.fourart.entity.Member;
 import com.example.fourart.entity.Role;
-import com.example.fourart.entity.SocialLoginType;
-import com.example.fourart.secure.SecurityConfig;
-import com.example.fourart.service.InstaConnectService;
 import com.example.fourart.service.MemberService;
 import com.example.fourart.service.OAuth2Service;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.*;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
-
-import java.io.*;
-import java.net.*;
 import java.util.ArrayList;
-import javax.net.ssl.HttpsURLConnection;
 import java.time.LocalDateTime;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
-import static org.springframework.http.HttpHeaders.USER_AGENT;
 
 @Controller
 @Slf4j
 @RequiredArgsConstructor
 public class OAuth2Controller {
 
-    private final InstaConnectService instaConnectService;
     private final MemberService memberService;
     private final OAuth2Service oAuth2Service;
 
@@ -60,7 +39,6 @@ public class OAuth2Controller {
         member.setCreateDate(LocalDateTime.now());
         member.setUpdateDate(LocalDateTime.now());
         member.setInstagram(null);
-        //member.setMemberHashTag(new ArrayList<>());
         member.setInterestingSubject(new ArrayList<>());
         memberService.join(member);
         return member;

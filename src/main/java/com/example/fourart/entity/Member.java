@@ -1,17 +1,9 @@
 package com.example.fourart.entity;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.*;
-import net.minidev.json.JSONArray;
-import org.springframework.lang.Nullable;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Getter @Setter
