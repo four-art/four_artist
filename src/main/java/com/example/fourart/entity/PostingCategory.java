@@ -1,12 +1,5 @@
 package com.example.fourart.entity;
 
-import lombok.Setter;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-
 public enum PostingCategory {
     HELLO("hello"),//가입인사
     TOGETHER("together"),//함께해요

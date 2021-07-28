@@ -4,9 +4,9 @@ import com.example.fourart.entity.Member;
 import com.example.fourart.entity.SocialLoginType;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 @Service
 public class OAuth2Service {
     public Member getUserEmailAndProfileImg(OAuth2User oAuth2User){
