@@ -1,0 +1,17 @@
+.home__4rt{
+    display: flex;
+    justify-content: space-between;
+}
+
+.home__4rt > h1{
+    width: 62px;
+    font-size: 35px;
+    margin-top: 25px;
+}
+
+.home__4rt > .MuiSvgIcon-root{
+    color: #000000;
+    margin: 35px 20px 15px 10px;
+    font-size: 30px;
+    cursor: pointer;
+}

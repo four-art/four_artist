@@ -1,0 +1,28 @@
+.noticelist__name{
+    font-family: 'Nanum Gothic';
+    font-size: 12px;
+    text-align: left;
+    color: #000000;
+    margin-top: 20px;
+    margin-left: 7px;
+}
+
+.noticelist{
+    display: flex;
+}
+
+.noticelist__memimg{
+    width: 40px;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 7.2px;
+  
+}
+
+.noticelist__name > p{
+    width: 305px;
+    margin-top: 10px;
+ 
+
+}
+

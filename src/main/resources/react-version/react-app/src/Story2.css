@@ -1,0 +1,42 @@
+.story2{
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 370px;
+    height: 160px;
+    margin-top: 15px;
+    transition: transform 100ms ease-in;
+    cursor: pointer;
+}
+
+.story2:hover{
+    transform: scale(1.01);
+}
+
+.story2__avatar{
+    margin-top: 10px;
+    margin-left: 16px;
+    background-color: white;
+}
+
+
+
+.story2 > h4{
+    position: absolute;
+    left: 20px;
+    color: white;
+    width: 330px;
+    height: 51px;
+    margin: 52px 0 0;
+    font-family: NanumGothic;
+    font-size: 18px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.67;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+

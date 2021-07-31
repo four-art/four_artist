@@ -1,0 +1,41 @@
+.circlevent{
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-top: 30px;
+    margin-left: 10px;
+    box-shadow: 0 6px 16px 0px rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+    border-radius: 100%;
+    transition: transform 100ms ease-in;
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+
+.circlevent > img{
+    position: absolute;
+    display: block;
+    margin-top: 20px;
+    margin-left: 23px;
+}
+
+.circlevent > p{
+    position: absolute;
+    width: 54px;
+    height: 14px;
+    font-family: NanumGothic;
+    font-size: 12px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #aaaaaa;
+    margin-top: 45px;
+    margin-left: 13.5px;
+}
+.circlevent:hover{
+    transform: scale(1.07);
+}

@@ -1,0 +1,10 @@
+.communityfilter{
+    display: flex;
+}
+
+
+.communityfilter > img{
+    width: 60px;
+    margin-top: -5px;
+}
+

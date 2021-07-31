@@ -1,0 +1,191 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+.header{
+    width: 390px;
+    height: 90px;
+    position: sticky;
+    background-color: rgb(255, 255, 255);
+    z-index: 999;
+    top: 0;
+    margin: 0px 292px 10px 0px;
+    padding-left: 15px;
+    padding-top: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+
+}
+
+
+.header__left > .MuiSvgIcon-root{
+    color: #000000;
+    margin: 10px 20.8px 15px 10px;
+    font-size: 30px;
+}
+
+.header__left{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
+.header__logo{
+    width: 78px;
+    height: 30px;
+    margin: 0px 242px 30px -10px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.header__search{
+    width: 20px;
+    height: 30px;
+    margin: 2.5px 0px 0px 0px;
+    object-fit: contain;
+    overflow: hidden;
+    transition: all 0.5s linear;
+    cursor: pointer;
+}
+.header__search:hover{
+    transform: scale(1.2)
+}
+
+
+
+.header__center{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    
+}
+
+
+
+
+.header__option{
+    width: 70px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 8px;
+
+    
+}
+.header__option1{
+    width: 70px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 10px;
+
+
+    
+}
+.header__option2{
+    width: 70px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 2px;
+
+    
+}
+.header__option3{
+    width: 70px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 2px;
+
+    
+}
+.header__option4{
+    width: 70px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 24px;
+
+    
+}
+
+
+.header__option > p{
+    font-size: 14px;
+    font-weight: 900;
+    font-family: 'Nanum gothic';
+    padding-bottom: 10px;
+
+
+}
+.header__option1 > p{
+    font-size: 14px;
+    font-weight: 900;
+    font-family: 'Nanum gothic';
+    padding-bottom: 10px;
+
+
+}
+.header__option2 > p{
+    
+    font-size: 14px;
+    font-weight: 900;
+    font-family: 'Nanum gothic';
+    padding-bottom: 10px;
+
+}
+
+.header__option3 > p{
+    font-size: 14px;
+    font-weight: 900;
+    font-family: 'Nanum gothic';
+    padding-bottom: 10px;
+
+}
+.header__option4 > p{
+    font-size: 14px;
+    font-weight: 900;
+    font-family: 'Nanum gothic';
+    padding-bottom: 10px;
+
+}
+.header__option5 > p{
+    font-size: 14px;
+    font-weight: 100;
+    font-family: 'Nanum gothic';
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    margin-right: -1000px;
+}
+
+
+.header__option > p:hover{
+    border-bottom:  5px solid #000000;
+
+}
+
+
+.header__option1 > p:hover{
+    border-bottom:  5px solid #000000;
+}
+
+
+
+.header__option2 > p:hover{
+    border-bottom:  5px solid #000000;
+}
+
+
+.header__option3 > p:hover{
+    border-bottom:  5px solid #000000;
+}
+
+
+.header__option4 > p:hover{
+    border-bottom:  5px solid #000000;
+    
+}
+
+.header__option5 > p:hover{
+    border-bottom:  5px solid #ffffff;
+    
+}

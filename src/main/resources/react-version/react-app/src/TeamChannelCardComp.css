@@ -1,0 +1,74 @@
+.teamchannelcardcomp {
+    width: 350px;
+    height: 220px;
+    margin-top: 10px;
+    margin-left: 11px;
+    border-radius: 8px;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.13);
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+.teamchannelcardcomp__bigimg{
+    position: relative;
+    object-fit: cover;
+    width: 350px;
+    height: 110px;
+    background-color: rgb(105, 32, 32);/*이부분 지워야함*/
+    border-radius: 8px 8px 0 0;
+}
+.teamchannelcardcomp__title{
+    width: 330px;
+    height: 19px;
+    margin: 7px 10px 9.5px;
+    font-family: 'Nanum Gothic';
+    font-size: 16px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+  
+}
+.teamchannelcardcomp__members{
+    width: 52px;
+    height: 14px;
+    margin: 4.5px 288px 5px 10px;
+    font-family: NanumGothic;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.teamchannelcardcomp__bookmark{
+    opacity: 0.5;
+    text-align: left;
+    position: absolute;
+    margin-left: -60px;
+    cursor: pointer;
+}
+
+.teamchannelcardcomp__bookmark:hover{
+    opacity: 1;
+}
+
+.teamchannelcardcomp > .MuiAvatar-root{
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    opacity: 0.5;
+    
+}
+.teamchannelcardcomp > .MuiAvatar-root:hover{
+    opacity: 1;
+}
+.teamchannelcardcomp:hover{
+    opacity: 0.87;
+}
+

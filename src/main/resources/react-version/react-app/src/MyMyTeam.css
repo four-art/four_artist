@@ -1,0 +1,43 @@
+.mymyteam{
+    width: 170px;
+    height: 170px;
+    margin: 0px 10px 30px 10px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.mymyteam__img{
+    width: 170px;
+    height: 110px;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.mymyteamflex{
+    display: flex;
+}
+
+.mymyteam__text{
+    width: 120px;
+    height: 23px;
+    margin-top: 1px;
+    margin-left: 8px;
+    font-family: 'Nanum Gothic';
+    font-size: 20px;
+    font-weight: 800;
+    text-align: left;
+    color: #333333;
+}
+
+.mymyteamflex >.MuiSvgIcon-root{
+    font-size: 45px;
+    border-radius: 100%;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.40);
+    margin-right: 13px;
+    margin-top: 2px;
+}
+
+.mymyteam:hover{
+    opacity: 0.87;
+}
