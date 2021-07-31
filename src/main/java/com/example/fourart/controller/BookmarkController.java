@@ -7,9 +7,9 @@ import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @Controller
 @RequiredArgsConstructor
@@ -45,5 +45,13 @@ public class BookmarkController {
     @PostMapping("/member/delete")
     public void deleteMemberBookmark(@RequestBody Long bookmarkId){
         bookmarkService.deleteMemberBookmark(bookmarkId);
+    }
+    @GetMapping("/posting/showAll")
+    public Set showAllPostingBookmark(@RequestParam Long id){
+        return bookmarkService.findPostingBookmarksByMemberId(id);
+    }
+    @GetMapping("/posting/showAll")
+    public Set showAllMemberBookmark(@RequestParam Long id){
+        return bookmarkService.findMemberBookmarksByMemberId(id);
     }
 }
