@@ -18,6 +18,10 @@ import java.util.List;
 @Slf4j
 @Api(tags={"게시판 API"})
 public class PostingController {
+    /**
+     * TODO : 새 게시글 작성, 게시글 삭제, 게시글 보여주기, 게시글에 회원 정보 보여주기.
+     * 댓글 작성, 댓글 수정, 댓글 삭제
+     */
     private final PostingService postingService;
 
     @GetMapping(value = "/posting/new")
@@ -66,6 +70,10 @@ public class PostingController {
     @PostMapping(value="/posting/delete")
     public void deletePosting(Long id){
         postingService.deletePost(id);
+    }
+    @PostMapping(value="/posting/{postingId}/viewCountPlus")
+    public Long viewCountPlus(@PathVariable("postingId") Long postingId){
+        return 0l;
     }
 
 }

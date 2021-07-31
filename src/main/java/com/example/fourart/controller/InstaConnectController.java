@@ -30,9 +30,10 @@ import static org.springframework.http.HttpHeaders.USER_AGENT;
 @RequiredArgsConstructor
 public class InstaConnectController {
 
+
     @Value("${custom.oauth2.instagram.client-id}") String instaClientId;
     @Value("${custom.oauth2.instagram.client-secret}") String instaClientSecret;
-
+    //프론트 단에서 insta인증 요청을 받으면 여기부터 처리.
     @GetMapping("/insta_request")
     public String instaRequest(){
         String BASE_URL = "https://api.instagram.com/oauth/authorize?";
@@ -76,6 +77,7 @@ public class InstaConnectController {
 
         return "redirect:getInstaUsername?user_id="+oToken.getUser_id()+"&access_token="+oToken.getAccess_token();
     }
+    //프론트 단에 인스타 아이디 넘겨주기
     @GetMapping("/getInstaUsername")
     public String getInstaUsername(@RequestParam("user_id") Long user_id, @RequestParam("access_token") String accessToken, Model model) throws IOException {
 

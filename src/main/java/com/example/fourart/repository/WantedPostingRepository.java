@@ -1,9 +1,9 @@
 package com.example.fourart.repository;
 
-import com.example.fourart.entity.Bookmark;
+import com.example.fourart.entity.WantedPosting;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BookmarkRepository extends JpaRepository<Bookmark, Long> {
+public interface WantedPostingRepository extends JpaRepository<WantedPosting, Long> {
 }

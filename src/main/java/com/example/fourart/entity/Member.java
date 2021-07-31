@@ -1,21 +1,13 @@
 package com.example.fourart.entity;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.*;
-import net.minidev.json.JSONArray;
-import org.springframework.lang.Nullable;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Member implements Serializable {
+public class Member{
 
     @Id @GeneratedValue
     @Column(name = "member_id")
@@ -39,17 +31,17 @@ public class Member implements Serializable {
     @Column(name = "social_login_type")
     private SocialLoginType socialLoginType;
 
+//    @OneToMany(mappedBy = "member")
+//    @Enumerated(EnumType.ORDINAL)
+//    private List<MemberHashTag> memberHashTag = new ArrayList<>();
+
     @ElementCollection(targetClass = InterestingSubject.class)
     @Column(name = "interest", nullable = true)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "person_interest")
     private Collection<InterestingSubject> interestingSubject;
 
-    @ElementCollection(targetClass = HashTag.class)
-    @Column(name = "hashtag", nullable = true)
-    @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "member_hashtag")
-    private Collection<HashTag> memberHashTag;
+
 
     @Column(name = "create_account_date")
     private LocalDateTime createDate;

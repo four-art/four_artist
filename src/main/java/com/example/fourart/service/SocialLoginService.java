@@ -1,10 +1,7 @@
 package com.example.fourart.service;
 
-import com.example.fourart.entity.Member;
-import com.example.fourart.entity.Role;
-import com.example.fourart.repository.MemberRepository;
+
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.RequestEntity;
@@ -30,12 +27,8 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
-import javax.persistence.PersistenceContext;
-import java.time.LocalDateTime;
 import java.util.*;
 
-import static com.example.fourart.entity.Role.GUEST;
-import static com.example.fourart.entity.SocialLoginType.KAKAO;
 
 @Service
 @Slf4j

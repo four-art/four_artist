@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 @Entity
 @Getter @Setter
-public class Bookmark {
+public class PostingBookmark {
     @Id @GeneratedValue
     private Long id;
 

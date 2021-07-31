@@ -2,18 +2,21 @@ package com.example.fourart.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter
-@Table(name = "posting")
+@DiscriminatorColumn
+@Inheritance(strategy = InheritanceType.JOINED)
+@DynamicInsert
 public class Posting {
     @Id
     @GeneratedValue
     private Long id;
-
 
     @ManyToOne
     @JoinColumn(name = "member_id")
@@ -27,6 +30,11 @@ public class Posting {
 
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
+
+    @Column(name = "view_count")
+    @ColumnDefault("0")
+    private Long viewCount;
+
 
     @Column(name = "create_account_date")
     private LocalDateTime createDate;

@@ -1,15 +1,17 @@
 package com.example.fourart.service;
 
 
-import com.example.fourart.entity.Posting;
+import com.example.fourart.entity.*;
 import com.example.fourart.repository.PostingRepository;
+import com.example.fourart.repository.WantedPostingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -18,12 +20,11 @@ import java.util.Optional;
 public class PostingService{
 
     private final PostingRepository postingRepository;
-
-
+    private final WantedPostingRepository wantedPostingRepository;
+    private final EntityManager em;
     /**
      *  TODO: 글 검색 기능 구현
      */
-    @Transactional
     public void savePosting(Posting posting) {
         postingRepository.save(posting);
     }
@@ -35,14 +36,33 @@ public class PostingService{
     public Object findOne(Long postingId) {
         return postingRepository.getOne(postingId);
     }
-
     public void updatePosting(Long id, String title, String content) {
-        Posting posting = postingRepository.getOne(id);
-        posting.setTitle(title);
-        posting.setContent(content);
+        postingRepository.updatePosting(id,title,content);
     }
-
     public void deletePost(Long id) {
         postingRepository.deleteById(id);
+    }
+    public void viewCountUp(Long id){ postingRepository.updateView(id);}
+    public List<Long> searchPostings(String toFind){
+        return postingRepository.searchPostings(toFind);
+    }
+    public Set<Long>  searchByPostingHashTag(HashTag hashTag){
+        return postingRepository.searchByPostingHashTag(hashTag);
+    }
+    public Set<Long> searchAuthor(String toFind){
+        return postingRepository.searchAuthor(toFind);
+    }
+    public void addHashTag(Long id,HashTag hashTag){
+        WantedPosting wantedPosting = wantedPostingRepository.getOne(id);
+        WantedPostingHashTag wantedPostingHashTag = new WantedPostingHashTag();
+        wantedPostingHashTag.setWantedPosting(wantedPosting);
+        wantedPostingHashTag.setWantedPostingHashTag(hashTag);
+        em.persist(wantedPostingHashTag);
+    }
+    public void addHashTagList(Long id, List<HashTag> hashTagList){
+        for(HashTag h : hashTagList){
+            addHashTag(id,h);
+        }
+        em.flush();
     }
 }
