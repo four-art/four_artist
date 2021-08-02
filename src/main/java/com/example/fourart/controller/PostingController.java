@@ -67,13 +67,13 @@ public class PostingController {
         postingService.updatePosting(form.getId(),form.getTitle(),form.getContent());
         return "redirect:/postings";
     }
-    @PostMapping(value="/posting/delete")
-    public void deletePosting(Long id){
-        postingService.deletePost(id);
+    @PostMapping(value="/posting/{postingId}/delete")
+    public void deletePosting(@PathVariable("postingId") Long postingId){
+        postingService.deletePost(postingId);
     }
     @PostMapping(value="/posting/{postingId}/viewCountPlus")
     public Long viewCountPlus(@PathVariable("postingId") Long postingId){
         return 0l;
     }
-
+ 
 }
