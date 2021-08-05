@@ -1,0 +1,53 @@
+body{
+    background-color: #fff;
+}
+
+.Community_Post_Topic_Select{
+    width: 390px;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+}
+
+
+
+.Topic_Select{
+    width: 90px;
+  height: 25px;
+  margin: 18px 151px 35px 101px;
+  font-family: 'Nanum Gothic';
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000;
+}
+
+.Topic_Select_text1{
+    width: 68px;
+    height: 19px;
+    font-family: 'Nanum Gothic';
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #333;
+}
+.Topic_Select_btn1{
+    border: none;
+    cursor: pointer;
+    width: 390px;
+    display: block;
+    text-align: center;
+}
+.Topic_Select_btn1:hover{
+    background-color: rgb(226, 226, 226);
+    border-radius: 8px;
+}
+
