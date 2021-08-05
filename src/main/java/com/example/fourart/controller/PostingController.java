@@ -29,31 +29,38 @@ public class PostingController {
         model.addAttribute("form",new PostingForm());
         return "posting/createTeamForm";
     }
-
     @PostMapping(value = "/posting/new")
     public String create(PostingForm form){
         Posting posting = new Posting();
         postingService.savePosting(posting);
         return "redirect:/teams";
     }
+
     @GetMapping(value = "/posting/wanted/new")
     public String createWantedForm(Model model){
         model.addAttribute("form",new PostingForm());
         return "posting/createTeamForm";
     }
-
     @PostMapping(value = "/posting/wanted/new")
     public String createWanted(PostingForm form){
         Posting posting = new Posting();
         postingService.savePosting(posting);
         return "redirect:/teams";
     }
+
     @GetMapping(value = "/postings")
     public String list(Model model){
         //postingService에서 findPostings 구현
         List<Posting> teams = postingService.findPostings();
         return "";
     }
+
+    @GetMapping(value="postings/{postindId}")
+    public String getPosting(@PathVariable("postingId") Long postingId) {
+        postingService.viewCountUp(postingId);
+        return "";
+    }
+
     @GetMapping(value ="/postings/{postingId}/edit")
     public String editPostingForm(@PathVariable("postingId") Long postingId, Model model){
         Posting team = (Posting) postingService.findOne(postingId);
@@ -67,13 +74,14 @@ public class PostingController {
         postingService.updatePosting(form.getId(),form.getTitle(),form.getContent());
         return "redirect:/postings";
     }
+
     @PostMapping(value="/posting/{postingId}/delete")
     public void deletePosting(@PathVariable("postingId") Long postingId){
         postingService.deletePost(postingId);
     }
-    @PostMapping(value="/posting/{postingId}/viewCountPlus")
-    public Long viewCountPlus(@PathVariable("postingId") Long postingId){
-        return 0l;
-    }
- 
+
+//    @PostMapping(value="/posting/{postingId}/viewCountPlus")
+//    public Long viewCountPlus(@PathVariable("postingId") Long postingId){
+//        return postingService.viewCountUp(postingId);
+//    }
 }
