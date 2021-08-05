@@ -1,1 +1,0 @@
-four-artist react-version
