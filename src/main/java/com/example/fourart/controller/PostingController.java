@@ -52,13 +52,13 @@ public class PostingController {
     public String list(Model model){
         //postingService에서 findPostings 구현
         List<Posting> teams = postingService.findPostings();
-        return "";
+        return "postings";
     }
 
     @GetMapping(value="postings/{postindId}")
     public String getPosting(@PathVariable("postingId") Long postingId) {
         postingService.viewCountUp(postingId);
-        return "";
+        return "posting";
     }
 
     @GetMapping(value ="/postings/{postingId}/edit")
@@ -70,7 +70,6 @@ public class PostingController {
     }
     @PostMapping(value = "/postings/{postingId}/edit")
     public String updatePosting(@ModelAttribute("form") PostingForm form){
-
         postingService.updatePosting(form.getId(),form.getTitle(),form.getContent());
         return "redirect:/postings";
     }
