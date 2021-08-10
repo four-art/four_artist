@@ -13,6 +13,10 @@ import java.util.List;
 @Repository
 public interface PostingRepository extends JpaRepository<Posting, Long> {
     @Modifying
+    @Query("select p.viewCount from Posting p where p.id = :id")
+    Long searchView(Long id);
+
+    @Modifying
     @Query("update Posting p set p.viewCount = p.viewCount + 1l where p.id = :id")
     void updateView(Long id);
 

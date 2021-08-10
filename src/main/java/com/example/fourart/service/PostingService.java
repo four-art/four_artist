@@ -42,7 +42,10 @@ public class PostingService{
     public void deletePost(Long id) {
         postingRepository.deleteById(id);
     }
-    public void viewCountUp(Long id){ postingRepository.updateView(id);}
+    public Long viewCountUp(Long id){
+        postingRepository.updateView(id);
+        return postingRepository.searchView(id);
+    }
     public List<Long> searchPostings(String toFind){
         return postingRepository.searchPostings(toFind);
     }
