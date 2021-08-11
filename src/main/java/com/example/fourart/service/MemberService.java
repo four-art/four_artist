@@ -20,17 +20,31 @@ public class MemberService {
     private final EntityManager em;
     @Transactional
     public Long join(Member member){
-        validateDuplicateMember(member);
-        memberRepository.save(member);
+        //validate에서 에러 던지나 확인
+        try {
+            if (validateDuplicateMember(member))
+                memberRepository.save(member);
+            else{
+                member = memberRepository.findByEmail(member.getEmail());
+            }
+        }catch (IllegalStateException e){
+            e.printStackTrace();
+        }
         return member.getId();
     }
 
 
-    private void validateDuplicateMember(Member member){
+    private boolean validateDuplicateMember(Member member){
         List<Member> findMembers = memberRepository.findAllByEmail(member.getEmail());
         if(!findMembers.isEmpty()){
-            throw new IllegalStateException("이미 가입된 회원입니다.");
+            Member findMember = findMembers.get(0);
+            if(findMember.getSocialLoginType() != member.getSocialLoginType())
+                throw new IllegalStateException("이미 가입된 회원입니다.");
+            else{
+                return false;
+            }
         }
+        return true;
     }
     public Member findMembers(String email){
         return memberRepository.findByEmail(email);
