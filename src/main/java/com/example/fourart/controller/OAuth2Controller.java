@@ -30,6 +30,7 @@ public class OAuth2Controller {
          * profile 어트리뷰트 가져오는 것으로 카카오,(구글,네이버 구분)
          * 구글, 네이버 프로필 사진 저장해놓은 key 명칭이 다름
          */
+
         Member member = new Member();
         Member temp = oAuth2Service.getUserEmailAndProfileImg(oAuth2User);
         member.setNickname(temp.getNickname());
