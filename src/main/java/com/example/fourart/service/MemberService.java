@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -32,7 +33,12 @@ public class MemberService {
         }
         return member.getId();
     }
-
+    public Optional<Member> findMember(Long id){
+        return memberRepository.findById(id);
+    }
+    public Member findMember(String nickname){
+        return memberRepository.findByNickname(nickname);
+    }
 
     private boolean validateDuplicateMember(Member member){
         List<Member> findMembers = memberRepository.findAllByEmail(member.getEmail());
