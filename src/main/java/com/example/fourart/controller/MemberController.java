@@ -3,12 +3,16 @@ package com.example.fourart.controller;
 import com.example.fourart.entity.Member;
 import com.example.fourart.form.MemberForm;
 import com.example.fourart.repository.MemberRepository;
+import com.example.fourart.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,18 +27,21 @@ public class MemberController {
      */
 
     private final MemberRepository memberRepository;
+    private final MemberService memberService;
 
-
-    @PostMapping(value = "/members/insta")
-    public String link(@Valid MemberForm memberForm, BindingResult result){
+    @PostMapping(value = "/members/{memberId}/insta")
+    public Member link(@Valid MemberForm memberForm, @PathVariable("memberId") BindingResult result){
         if(result.hasErrors()){
-            return "/members/createMemberForm";
+            return null;
         }
         Member member = new Member();
         member.setInstagram(memberForm.getInstagram());
 
         memberRepository.save(member);
-        return "Landing_page";
-
+        return member;
+    }
+    @GetMapping(value = "/members/{memberId}/info")
+    public Optional<Member> getMemberInfo(@PathVariable("memberId") Long memberId){
+        return memberService.findMember(memberId);
     }
 }

@@ -41,7 +41,8 @@ public class Member{
     @CollectionTable(name = "person_interest")
     private Collection<InterestingSubject> interestingSubject;
 
-
+    @Column(name = "introduce",columnDefinition = "TEXT")
+    private String introduce;
 
     @Column(name = "create_account_date")
     private LocalDateTime createDate;
