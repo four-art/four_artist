@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -33,6 +34,8 @@ public class PostingService{
         return postingRepository.findAll();
     }
 
+    public Optional<Posting> findPosting(Long id) { return postingRepository.findById(id); }
+
     public Object findOne(Long postingId) {
         return postingRepository.getOne(postingId);
     }
@@ -42,9 +45,8 @@ public class PostingService{
     public void deletePost(Long id) {
         postingRepository.deleteById(id);
     }
-    public Long viewCountUp(Long id){
+    public void viewCountUp(Long id){
         postingRepository.updateView(id);
-        return postingRepository.searchView(id);
     }
     public List<Long> searchPostings(String toFind){
         return postingRepository.searchPostings(toFind);
