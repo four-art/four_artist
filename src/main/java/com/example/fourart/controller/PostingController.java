@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -49,16 +50,15 @@ public class PostingController {
     }
 
     @GetMapping(value = "/postings")
-    public String list(Model model){
+    public List<Posting> list(){
         //postingService에서 findPostings 구현
-        List<Posting> teams = postingService.findPostings();
-        return "postings";
+        return postingService.findPostings();
     }
 
     @GetMapping(value="postings/{postindId}")
-    public String getPosting(@PathVariable("postingId") Long postingId) {
+    public Optional<Posting> getPosting(@PathVariable("postingId") Long postingId) {
         postingService.viewCountUp(postingId);
-        return "posting";
+        return postingService.findPosting(postingId);
     }
 
     @GetMapping(value ="/postings/{postingId}/edit")
@@ -74,13 +74,8 @@ public class PostingController {
         return "redirect:/postings";
     }
 
-    @PostMapping(value="/posting/{postingId}/delete")
+    @GetMapping(value="/posting/{postingId}/delete")
     public void deletePosting(@PathVariable("postingId") Long postingId){
         postingService.deletePost(postingId);
     }
-
-//    @PostMapping(value="/posting/{postingId}/viewCountPlus")
-//    public Long viewCountPlus(@PathVariable("postingId") Long postingId){
-//        return postingService.viewCountUp(postingId);
-//    }
 }
